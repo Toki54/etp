@@ -1,0 +1,206 @@
+<!doctype html>
+<html lang="fr" data-theme="dark">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="description" content="Nos services dev web : formulaire, site vitrine, SEO, maintenance. Prix indicatifs." />
+  <title>Nos services — ETP Dev</title>
+
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+
+<body>
+  <header class="header">
+    <div class="container header__inner">
+      <a class="brand" href="index.html" aria-label="Accueil">
+        <span class="brand__logo" aria-hidden="true">
+          <span class="dot dot--blue"></span>
+          <span class="dot dot--orange"></span>
+          <span class="dot dot--yellow"></span>
+        </span>
+        <span class="brand__name">ETP Dev</span>
+      </a>
+
+      <button class="burger" id="burger" type="button" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="nav">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="nav" id="nav" aria-label="Navigation principale">
+        <a class="nav__link" href="services.html">Nos services</a>
+        <a class="nav__link" href="projets.html">Nos projets</a>
+        <a class="nav__link" href="contact.html">Contact</a>
+        <button class="btn btn--ghost" id="themeBtn" type="button" aria-label="Basculer le thème">Thème</button>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="page-hero">
+      <div class="container">
+        <p class="badge">Tarifs indicatifs • Ajustés selon le besoin</p>
+        <h1>Nos services</h1>
+        <p class="lead">
+          Des offres claires, avec un prix de départ. On peut faire simple, ou carrément sérieux.
+        </p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="section__head">
+          <h2>Cartes services + prix</h2>
+        </div>
+
+        <div class="grid grid--3">
+          <article class="service-card" data-tilt data-animate="reveal" data-price="120">
+            <div class="service-card__top">
+              <h3>Formulaire</h3>
+              <span class="price">À partir de <strong>120€</strong></span>
+            </div>
+            <p class="muted">Formulaire contact (validation, anti-spam simple, message de confirmation).</p>
+            <ul class="list">
+              <li>Validation front (JS)</li>
+              <li>Champs personnalisés</li>
+              <li>Feedback utilisateur</li>
+            </ul>
+            <button class="btn btn--secondary add-to-estimate" type="button">Ajouter au devis</button>
+          </article>
+
+          <article class="service-card" data-tilt data-animate="reveal" data-price="390">
+            <div class="service-card__top">
+              <h3>Landing page</h3>
+              <span class="price">À partir de <strong>390€</strong></span>
+            </div>
+            <p class="muted">Une page “qui vend” : sections, CTA, responsive, performance.</p>
+            <ul class="list">
+              <li>Design propre</li>
+              <li>Responsive mobile</li>
+              <li>Base SEO</li>
+            </ul>
+            <button class="btn btn--secondary add-to-estimate" type="button">Ajouter au devis</button>
+          </article>
+
+          <article class="service-card" data-tilt data-animate="reveal" data-price="790">
+            <div class="service-card__top">
+              <h3>Site vitrine</h3>
+              <span class="price">À partir de <strong>790€</strong></span>
+            </div>
+            <p class="muted">3–5 pages : services, projets, contact, mentions, etc.</p>
+            <ul class="list">
+              <li>Multi-pages</li>
+              <li>Navigation mobile</li>
+              <li>Optimisation</li>
+            </ul>
+            <button class="btn btn--secondary add-to-estimate" type="button">Ajouter au devis</button>
+          </article>
+
+          <article class="service-card" data-tilt data-animate="reveal" data-price="180">
+            <div class="service-card__top">
+              <h3>SEO de base</h3>
+              <span class="price">À partir de <strong>180€</strong></span>
+            </div>
+            <p class="muted">Meta, structure, accessibilité, performance, sitemap (si besoin).</p>
+            <ul class="list">
+              <li>Balises & structure</li>
+              <li>Perf / images</li>
+              <li>Bonnes pratiques</li>
+            </ul>
+            <button class="btn btn--secondary add-to-estimate" type="button">Ajouter au devis</button>
+          </article>
+
+          <article class="service-card" data-tilt data-animate="reveal" data-price="250">
+            <div class="service-card__top">
+              <h3>Intégration</h3>
+              <span class="price">À partir de <strong>250€</strong></span>
+            </div>
+            <p class="muted">Intégrer une maquette (Figma) proprement en HTML/CSS.</p>
+            <ul class="list">
+              <li>Pixel-accurate</li>
+              <li>Animations légères</li>
+              <li>Composants réutilisables</li>
+            </ul>
+            <button class="btn btn--secondary add-to-estimate" type="button">Ajouter au devis</button>
+          </article>
+
+          <article class="service-card" data-tilt data-animate="reveal" data-price="120">
+            <div class="service-card__top">
+              <h3>Maintenance</h3>
+              <span class="price">À partir de <strong>120€</strong></span>
+            </div>
+            <p class="muted">Corrections, petites évolutions, sécurité, contenu, etc.</p>
+            <ul class="list">
+              <li>Mises à jour</li>
+              <li>Correctifs rapides</li>
+              <li>Suivi</li>
+            </ul>
+            <button class="btn btn--secondary add-to-estimate" type="button">Ajouter au devis</button>
+          </article>
+        </div>
+
+        <div class="estimate" data-animate="reveal">
+          <div class="estimate__left">
+            <h3>Estimation rapide</h3>
+            <div class="estimate__actions">
+              <button class="btn btn--secondary" id="resetEstimate" type="button">Reset</button>
+              <a class="btn btn--primary" href="contact.html">Envoyer la demande</a>
+            </div>
+          </div>
+
+          <div class="estimate__right">
+            <div class="estimate__box">
+              <p class="muted">Total estimé</p>
+              <p class="estimate__total"><strong id="estimateTotal">0</strong><span>€</span></p>
+              <p class="muted" id="estimateHint">Clique “Ajouter au devis” sur les cartes.</p>
+              <div class="estimate__items" id="estimateItems"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="faq" data-animate="reveal">
+          <div class="section__head">
+            <h2>FAQ</h2>
+          </div>
+
+          <div class="accordion" data-accordion>
+            <button class="accordion__btn" type="button" aria-expanded="false">
+              Combien de temps pour un site vitrine ?
+              <span class="accordion__icon" aria-hidden="true">+</span>
+            </button>
+            <div class="accordion__panel" hidden>
+              <p>Pour une vitrine simple : quelques jours. Pour une vitrine plus travaillée : 1–2 semaines selon contenu.</p>
+            </div>
+
+            <button class="accordion__btn" type="button" aria-expanded="false">
+              Les prix sont fixes ?
+              <span class="accordion__icon" aria-hidden="true">+</span>
+            </button>
+            <div class="accordion__panel" hidden>
+              <p>Ce sont des prix de départ. Le vrai prix dépend du contenu, du design, et des fonctionnalités.</p>
+            </div>
+
+            <button class="accordion__btn" type="button" aria-expanded="false">
+              Est-ce que je peux modifier moi-même le site ?
+              <span class="accordion__icon" aria-hidden="true">+</span>
+            </button>
+            <div class="accordion__panel" hidden>
+              <p>Oui. On peut livrer un site simple à éditer (contenu séparé, sections claires, fichiers propres).</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer__inner">
+      <p>© <span id="year"></span> ETP Dev — Tous droits réservés.</p>
+      <a class="link" href="contact.html">Contact</a>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

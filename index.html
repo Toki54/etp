@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="fr" data-theme="dark">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="description" content="ETP Dev — Développement web : sites vitrines, formulaires, web apps, maintenance." />
+  <title>ETP Dev — Développement Web</title>
+
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+
+<body>
+  <header class="header">
+    <div class="container header__inner">
+      <a class="brand" href="index.html" aria-label="Accueil">
+        <span class="brand__logo" aria-hidden="true">
+          <span class="dot dot--blue"></span>
+          <span class="dot dot--orange"></span>
+          <span class="dot dot--yellow"></span>
+        </span>
+        <span class="brand__name">ETP Dev</span>
+      </a>
+
+      <button class="burger" id="burger" type="button" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="nav">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="nav" id="nav" aria-label="Navigation principale">
+        <a class="nav__link" href="services.html">Nos services</a>
+        <a class="nav__link" href="projets.html">Nos projets</a>
+        <a class="nav__link" href="contact.html">Contact</a>
+        <button class="btn btn--ghost" id="themeBtn" type="button" aria-label="Basculer le thème">Thème</button>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container hero__grid">
+        <div class="hero__text">
+          <p class="badge">Web • Vitrine • Formulaires • Maintenance</p>
+          <h1>Du dev web propre, rapide, et livrable.</h1>
+          <p class="lead">
+            phrase pour recap nos service (nous  proposons etc...)
+          </p>
+
+          <div class="hero__cta">
+            <a class="btn btn--primary" href="services.html">Voir les services & prix</a>
+            <a class="btn btn--secondary" href="contact.html">Demander un devis</a>
+          </div>
+
+          
+        </div>
+
+        <div class="hero__card">
+          <div class="card card--glow" data-animate="reveal">
+            <div class="card__top">
+              <div class="mini-logo" aria-hidden="true">
+                <span class="dot dot--blue"></span>
+                <span class="dot dot--orange"></span>
+                <span class="dot dot--yellow"></span>
+              </div>
+              <div>
+                <p class="muted">Approche</p>
+                <h2>Simple, efficace, mesurable</h2>
+              </div>
+            </div>
+
+            <div class="card__content">
+              <p class="muted">
+                Un site vitrine n’est pas un “truc joli”.
+                C’est un outil : clarté, vitesse, confiance.
+              </p>
+
+              <div class="pill-row">
+                <span class="pill">Responsive</span>
+                <span class="pill">SEO de base</span>
+                <span class="pill">Formulaires</span>
+                <span class="pill">Mises à jour</span>
+              </div>
+
+              <div class="divider"></div>
+
+              <div class="card__actions">
+                <a class="link" href="projets.html">Voir des exemples →</a>
+                <span class="status" id="statusBadge">● Disponible</span>
+              </div>
+            </div>
+          </div>
+          <div class="glow" aria-hidden="true"></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="section__head">
+          <h2>En bref</h2>
+        </div>
+
+        <div class="grid grid--3">
+          <article class="tile" data-tilt data-animate="reveal">
+            <h3>Nos services</h3>
+            <p>Des cards avec prix : formulaire, vitrine, options, maintenance.</p>
+            <a class="link" href="services.html">Aller aux services →</a>
+          </article>
+
+          <article class="tile" data-tilt data-animate="reveal">
+            <h3>Nos projets</h3>
+            <p>Liste filtrable + aperçu en modal (JS).</p>
+            <a class="link" href="projets.html">Voir les projets →</a>
+          </article>
+
+          <article class="tile" data-tilt data-animate="reveal">
+            <h3>Contact</h3>
+            <p>Formulaire validé + compteur + feedback dynamique.</p>
+            <a class="link" href="contact.html">Nous contacter →</a>
+          </article>
+        </div>
+
+        <div class="cta-strip" data-animate="reveal">
+          <p><strong>Tu veux aller vite ?</strong> Une landing page propre peut sortir très vite.</p>
+          <a class="btn btn--primary" href="contact.html">Lancer le projet</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer__inner">
+      <p>© <span id="year"></span> ETP Dev — Tous droits réservés.</p>
+      <a class="link" href="services.html">Services</a>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
+

@@ -1,0 +1,185 @@
+<!doctype html>
+<html lang="fr" data-theme="dark">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="description" content="Nos projets : vitrines, landing pages, dashboards. Filtrage et aperçu dynamique." />
+  <title>Nos projets — ETP Dev</title>
+
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+
+<body>
+  <header class="header">
+    <div class="container header__inner">
+      <a class="brand" href="index.html" aria-label="Accueil">
+        <span class="brand__logo" aria-hidden="true">
+          <span class="dot dot--blue"></span>
+          <span class="dot dot--orange"></span>
+          <span class="dot dot--yellow"></span>
+        </span>
+        <span class="brand__name">ETP Dev</span>
+      </a>
+
+      <button class="burger" id="burger" type="button" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="nav">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="nav" id="nav" aria-label="Navigation principale">
+        <a class="nav__link" href="services.html">Nos services</a>
+        <a class="nav__link" href="projets.html">Nos projets</a>
+        <a class="nav__link" href="contact.html">Contact</a>
+        <button class="btn btn--ghost" id="themeBtn" type="button" aria-label="Basculer le thème">Thème</button>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="page-hero">
+      <div class="container">
+        <p class="badge">Filtrage • Modal • Effets JS</p>
+        <h1>Nos projets</h1>
+        
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="projects-toolbar" data-animate="reveal">
+          <div class="chips" role="tablist" aria-label="Filtre de projets">
+            <button class="chip is-active" type="button" data-filter="all">Tous</button>
+            <button class="chip" type="button" data-filter="vitrine">Vitrine</button>
+            <button class="chip" type="button" data-filter="landing">Landing</button>
+            <button class="chip" type="button" data-filter="dashboard">Dashboard</button>
+          </div>
+
+          <div class="searchbox">
+            <input id="projectSearch" type="search" placeholder="Rechercher un projet..." aria-label="Rechercher un projet">
+          </div>
+        </div>
+
+        <div class="grid grid--3" id="projectsGrid">
+          <article class="project-card" data-tilt data-animate="reveal" data-tags="vitrine" data-title="Site vitrine artisan">
+            <div class="project-card__meta">
+              <span class="tag">Vitrine</span>
+              <span class="tag">SEO</span>
+            </div>
+            <h3>Site vitrine artisan</h3>
+            <p class="muted">Pages services + contact + performance. Objectif : appels/devis.</p>
+            <button class="link open-project" type="button"
+              data-project='{"title":"Site vitrine artisan","tags":["Vitrine","SEO"],"desc":"Vitrine simple et rapide, avec structure propre, section services, formulaire contact, et optimisation vitesse.","stack":["HTML","CSS","JS"],"result":"Plus de demandes via formulaire + meilleure lisibilité mobile."}'>
+              Aperçu →
+            </button>
+          </article>
+
+          <article class="project-card" data-tilt data-animate="reveal" data-tags="landing" data-title="Landing conversion">
+            <div class="project-card__meta">
+              <span class="tag">Landing</span>
+              <span class="tag">CTA</span>
+            </div>
+            <h3>Landing conversion</h3>
+            <p class="muted">Une page focalisée sur 1 objectif : convertir.</p>
+            <button class="link open-project" type="button"
+              data-project='{"title":"Landing conversion","tags":["Landing","CTA"],"desc":"Hero + preuve sociale + avantages + section prix + CTA répétés. Animations légères, responsive.","stack":["HTML","CSS","JS"],"result":"Taux de clic CTA amélioré sur mobile."}'>
+              Aperçu →
+            </button>
+          </article>
+
+          <article class="project-card" data-tilt data-animate="reveal" data-tags="dashboard" data-title="Dashboard interne">
+            <div class="project-card__meta">
+              <span class="tag">Dashboard</span>
+              <span class="tag">UI</span>
+            </div>
+            <h3>Dashboard interne</h3>
+            <p class="muted">Écrans de suivi, métriques, exports. UI claire.</p>
+            <button class="link open-project" type="button"
+              data-project='{"title":"Dashboard interne","tags":["Dashboard","UI"],"desc":"Interface orientée productivité : filtres, tableaux, et vues synthèse. (Remplace par ton vrai projet plus tard.)","stack":["HTML","CSS","JS"],"result":"Navigation plus rapide, infos visibles en 1 écran."}'>
+              Aperçu →
+            </button>
+          </article>
+
+          <article class="project-card" data-tilt data-animate="reveal" data-tags="vitrine" data-title="Vitrine agence">
+            <div class="project-card__meta">
+              <span class="tag">Vitrine</span>
+              <span class="tag">Design</span>
+            </div>
+            <h3>Vitrine agence</h3>
+            <p class="muted">Identité, sections propres, projets, contact, FAQ.</p>
+            <button class="link open-project" type="button"
+              data-project='{"title":"Vitrine agence","tags":["Vitrine","Design"],"desc":"Mise en page moderne, composants réutilisables, et navigation mobile fluide.","stack":["HTML","CSS","JS"],"result":"Site plus crédible, meilleure présentation des services."}'>
+              Aperçu →
+            </button>
+          </article>
+
+          <article class="project-card" data-tilt data-animate="reveal" data-tags="landing" data-title="Page produit">
+            <div class="project-card__meta">
+              <span class="tag">Landing</span>
+              <span class="tag">Produit</span>
+            </div>
+            <h3>Page produit</h3>
+            <p class="muted">Sections, points forts, preuves, FAQ, contact.</p>
+            <button class="link open-project" type="button"
+              data-project='{"title":"Page produit","tags":["Landing","Produit"],"desc":"Page produit claire, lisible, avec bénéfices, preuves, et FAQ. Animations discrètes.","stack":["HTML","CSS","JS"],"result":"Meilleure compréhension du produit, moins de questions répétées."}'>
+              Aperçu →
+            </button>
+          </article>
+
+          <article class="project-card" data-tilt data-animate="reveal" data-tags="dashboard" data-title="Admin contenu">
+            <div class="project-card__meta">
+              <span class="tag">Dashboard</span>
+              <span class="tag">Admin</span>
+            </div>
+            <h3>Admin contenu</h3>
+            <p class="muted">CRUD, listes, recherche, vues claires.</p>
+            <button class="link open-project" type="button"
+              data-project='{"title":"Admin contenu","tags":["Dashboard","Admin"],"desc":"Gestion de contenus : listes, recherche, actions rapides. Parfait pour back-office.","stack":["HTML","CSS","JS"],"result":"Edition plus simple, moins de bugs d’interface."}'>
+              Aperçu →
+            </button>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- MODAL -->
+    <div class="modal" id="projectModal" aria-hidden="true">
+      <div class="modal__overlay" data-close-modal></div>
+      <div class="modal__panel" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+        <button class="modal__close" type="button" aria-label="Fermer" data-close-modal>×</button>
+        <div class="modal__content">
+          <div class="modal__head">
+            <h2 id="modalTitle">Projet</h2>
+            <div class="modal__tags" id="modalTags"></div>
+          </div>
+          <p class="muted" id="modalDesc"></p>
+
+          <div class="modal__grid">
+            <div class="modal__box">
+              <h3>Stack</h3>
+              <div class="pill-row" id="modalStack"></div>
+            </div>
+            <div class="modal__box">
+              <h3>Résultat</h3>
+              <p class="muted" id="modalResult"></p>
+            </div>
+          </div>
+
+          <div class="divider"></div>
+          <a class="btn btn--primary" href="contact.html">Demander un projet similaire</a>
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+  <footer class="footer">
+    <div class="container footer__inner">
+      <p>© <span id="year"></span> ETP Dev — Tous droits réservés.</p>
+      <a class="link" href="services.html">Services</a>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
