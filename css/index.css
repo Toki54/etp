@@ -1,0 +1,90 @@
+/* =========================================
+   css/index.css  (PAGE ACCUEIL)
+   ========================================= */
+
+.hero{padding:60px 0 24px}
+
+.hero__grid{
+  display:grid;
+  grid-template-columns:1.25fr .75fr;
+  gap:24px;
+  align-items:center;
+}
+
+.hero__cta{
+  display:flex;
+  gap:12px;
+  flex-wrap:wrap;
+  margin:18px 0 18px;
+}
+
+/* Carte “approche” */
+.card{
+  border:1px solid rgba(255,255,255,.10);
+  border-radius:var(--radius);
+  background:
+    radial-gradient(240px 120px at 12% 0%, rgba(124,58,237,.18), transparent 55%),
+    radial-gradient(220px 120px at 90% 10%, rgba(34,211,238,.14), transparent 55%),
+    rgba(255,255,255,.04);
+  box-shadow:var(--shadow2);
+  overflow:hidden;
+  position:relative;
+}
+
+.card__top{
+  display:flex;
+  gap:14px;
+  align-items:center;
+  padding:18px 18px 8px;
+}
+
+.card__content{padding:8px 18px 18px}
+
+.card__actions{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+}
+
+.status{
+  font-size:12px;
+  color:var(--muted);
+  border:1px solid rgba(255,255,255,.10);
+  padding:6px 10px;
+  border-radius:999px;
+  white-space:nowrap;
+}
+
+/* Glow décoratif derrière la carte */
+.hero__card{position:relative}
+.glow{
+  position:absolute;
+  inset:-35px;
+  background:
+    radial-gradient(320px 220px at 30% 35%, rgba(124,58,237,.30), transparent 60%),
+    radial-gradient(320px 220px at 70% 55%, rgba(34,211,238,.24), transparent 60%),
+    radial-gradient(320px 220px at 40% 85%, rgba(163,255,18,.16), transparent 60%);
+  filter:blur(20px);
+  pointer-events:none;
+  opacity:.9;
+}
+
+.cta-strip{
+  margin-top:18px;
+  border:1px solid rgba(255,255,255,.10);
+  background:
+    linear-gradient(135deg, rgba(124,58,237,.18), rgba(34,211,238,.12)),
+    radial-gradient(200px 80px at 18% 0%, rgba(163,255,18,.12), transparent 60%);
+  border-radius:var(--radius);
+  padding:16px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:14px;
+  flex-wrap:wrap;
+}
+
+@media (max-width: 920px){
+  .hero__grid{grid-template-columns:1fr}
+}
