@@ -1,9 +1,11 @@
 <!doctype html>
 <html lang="fr" data-theme="dark">
+
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <meta name="description" content="ETP Dev — Développement web : sites vitrines, formulaires, web apps, maintenance." />
+  <meta name="description"
+    content="ETP Dev — Développement web : sites vitrines, formulaires, web apps, maintenance." />
   <title>ETP Dev — Développement Web</title>
 
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -17,20 +19,20 @@
     <div class="container header__inner">
       <a class="brand" href="index.html" aria-label="Accueil">
         <span class="brand__logo" aria-hidden="true">
-          
         </span>
         <span class="brand__name">ETP Dev</span>
       </a>
-
-      <button class="burger" id="burger" type="button" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="nav">
+      <button class="burger" id="burger" type="button" aria-label="Ouvrir le menu" aria-expanded="false"
+        aria-controls="nav">
         <span></span><span></span><span></span>
       </button>
-
       <nav class="nav" id="nav" aria-label="Navigation principale">
         <a class="nav__link" href="services.html">Nos services</a>
-        <a class="nav__link" href="projets.html">Nos projets</a>
-        <a class="nav__link" href="contact.html">Contact</a>
-        <button class="btn btn--ghost" id="themeBtn" type="button" aria-label="Basculer le thème">Thème</button>
+        <!-- <a class="nav__link" href="projets.html">Nos projets</a> -->
+        <a class="nav__link" href="contact.html">Nous contacter</a>
+        <button class="btn btn--ghost" id="themeBtn" type="button" aria-label="Basculer le thème">
+          <img src="assets/icon-theme-dark.png" alt="Thème">
+        </button>
       </nav>
     </div>
   </header>
@@ -38,21 +40,28 @@
   <main>
     <section class="hero">
       <div class="container hero__grid">
+        <!-- Presentation des solutions -->
         <div class="hero__text">
-          <p class="badge">Web • Vitrine • Formulaires • Maintenance</p>
-          <h1>Du dev web propre, rapide, et livrable.</h1>
+          <p class="badge">Web • Vitrine • Formulaires • Maintenance • Sécurité</p>
+          <h1>Votre site web propre, rapide, et livrable.</h1>
           <p class="lead">
-            phrase pour recap nos service (nous  proposons etc...)
+            Nous proposons des solutions adaptées à vos besoins
           </p>
-
+          <ul class="muted">
+            <li><b>Landing Page</b>: une page simple pour une seule action (adapté pour taxi, livreur, etc.)</li>
+            <li><b>Vitrine</b>: un site composé de plusieurs pages (adapté pour petit commerce, portfolio)</li>
+            <li><b>E-Commerce</b>: un site de vente en ligne (adapté pour des commerçants ayant un gros volume de
+              ventes)</li>
+            <li><b>Tout-en-un</b>: un site complet avec base de données (adapté pour site plus complexe avec
+              inscription, gestion de commandes, interface administrateur, etc.) </li>
+            <li><b>Autre</b>: un site ou une application mobile adaptée à vos besoins</li>
+          </ul>
           <div class="hero__cta">
             <a class="btn btn--primary" href="services.html">Voir les services & prix</a>
             <a class="btn btn--secondary" href="contact.html">Demander un devis</a>
           </div>
-
-          
         </div>
-
+        <!-- Carte info supplémentaire -->
         <div class="hero__card">
           <div class="card card--glow" data-animate="reveal">
             <div class="card__top">
@@ -62,30 +71,30 @@
                 <span class="dot dot--yellow"></span>
               </div>
               <div>
-                <p class="muted">Approche</p>
-                <h2>Simple, efficace, mesurable</h2>
+                <p class="muted">Notre approche</p>
+                <h2>Simple & Efficace</h2>
               </div>
             </div>
 
             <div class="card__content">
               <p class="muted">
-                Un site vitrine n’est pas un “truc joli”.
-                C’est un outil : clarté, vitesse, confiance.
+                Peu importe la formule, nos sites incluent des fonctionnalités essentielles
               </p>
 
               <div class="pill-row">
                 <span class="pill">Responsive</span>
-                <span class="pill">SEO de base</span>
-                <span class="pill">Formulaires</span>
+                <span class="pill">SEO basique</span>
+                <span class="pill">Statistiques</span>
                 <span class="pill">Mises à jour</span>
+                <span class="pill">Sécurité</span>
               </div>
 
-              <div class="divider"></div>
-
+              <!-- <div class="divider"></div>
               <div class="card__actions">
                 <a class="link" href="projets.html">Voir des exemples →</a>
                 <span class="status" id="statusBadge">● Disponible</span>
-              </div>
+              </div> -->
+              
             </div>
           </div>
           <div class="glow" aria-hidden="true"></div>
@@ -100,41 +109,62 @@
         </div>
 
         <div class="grid grid--3">
-          <article class="tile" data-tilt data-animate="reveal">
+          <!-- Récap services -->
+          <article class="tile" data-tilt data-animate="reveal"               style="
+              display: flex;
+              flex-direction: column;
+              justify-content: space-evenly;">
             <h3>Nos services</h3>
-            <p>Des cards avec prix : formulaire, vitrine, options, maintenance.</p>
+            <div class="divider"></div>
+            <p>Formule fixe</p>
+            <p>Formule personnalisée</p>
+            <p>Refonte d'un site web existant</p>
+            <p>Création d'une application Android</p>
+            <p>Accompagnement lors de la création de votre projet et suivi</p>
+            <div class="divider"></div>
             <a class="link" href="services.html">Aller aux services →</a>
           </article>
 
-          <article class="tile" data-tilt data-animate="reveal">
+          <!-- <article class="tile" data-tilt data-animate="reveal">
             <h3>Nos projets</h3>
             <p>Liste filtrable + aperçu en modal (JS).</p>
             <a class="link" href="projets.html">Voir les projets →</a>
-          </article>
+          </article> -->
 
-          <article class="tile" data-tilt data-animate="reveal">
-            <h3>Contact</h3>
-            <p>Formulaire validé + compteur + feedback dynamique.</p>
-            <a class="link" href="contact.html">Nous contacter →</a>
+          <!-- Nous contacter -->
+          <article class="tile" data-tilt data-animate="reveal" 
+              style="
+              display: flex;
+              flex-direction: column;
+              justify-content: space-evenly;">
+            <h3>Nous contacter</h3>
+            <div class="divider"></div>
+            <p class="muted">Que vous ayez choisi une formule ou que vous ayez besoin d'aide pour en choisir une,
+              contactez-nous pour lancer votre projet dès maintenant !</p>
+            <div class="divider"></div>
+            <a class="link" href="contact.html">Aller à la page de contact →</a>
           </article>
         </div>
 
-        <div class="cta-strip" data-animate="reveal">
+        <!-- Dans CSS modif (2,1fr) en (3,1fr):
+        .grid--3{grid-template-columns:repeat(2,1fr)} 
+        -->
+        <!-- <div class="cta-strip" data-animate="reveal">
           <p><strong>Tu veux aller vite ?</strong> Une landing page propre peut sortir très vite.</p>
           <a class="btn btn--primary" href="contact.html">Lancer le projet</a>
-        </div>
+        </div> -->
       </div>
     </section>
   </main>
 
   <footer class="footer">
     <div class="container footer__inner">
-      <p>© <span id="year"></span> ETP Dev — Tous droits réservés.</p>
+      <p>© 2025 - <span id="year"></span> ETP Dev — Tous droits réservés.</p>
       <a class="link" href="services.html">Services</a>
     </div>
   </footer>
 
   <script src="js/main.js"></script>
 </body>
-</html>
 
+</html>

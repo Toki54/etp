@@ -12,7 +12,7 @@
   --card:rgba(255,255,255,.06);
   --border:rgba(255,255,255,.12);
 
-  --accent:#7c3aed;
+  --accent:#9787b3;
   --accent2:#22d3ee;
   --accent3:#a3ff12;
   --danger:#ff4d6d;
@@ -312,7 +312,7 @@ html[data-theme="light"] .burger{
    GRID / CARDS
    ====================== */
 .grid{display:grid;gap:14px}
-.grid--3{grid-template-columns:repeat(3,1fr)}
+.grid--3{grid-template-columns:repeat(2,1fr)}
 
 .tile, .project-card, .service-card, .sidecard, .form{
   border:1px solid rgba(255,255,255,.10);
@@ -399,7 +399,7 @@ html[data-theme="light"] .footer{border-top:1px solid rgba(12,14,22,.10)}
 }
 
 @media (max-width: 760px){
-  .burger{display:inline-flex;align-items:center;justify-content:center}
+  .burger{display:inline-flex;align-items:center;justify-content:center;flex-direction: column;}
 
   .nav{
     position:absolute;
@@ -431,4 +431,21 @@ html[data-theme="light"] .footer{border-top:1px solid rgba(12,14,22,.10)}
     transform:scale(1);
     pointer-events:auto;
   }
+}
+
+/* Thème Image Taille */
+#themeBtn img {
+  width: 20px;
+  height: 20px;
+  display: block;
+}
+
+/* Thème Image DarkMode */
+.btn--ghost img{
+  content: url("../assets/icon-theme-light.png");
+}
+
+/* Thème Image LightMode */
+html[data-theme="light"] .btn--ghost img{
+ content:url("../assets/icon-theme-dark.png");
 }

@@ -1,0 +1,16 @@
+Index.html
++/- OK
+modif les services à ajouter ?
+changer la taille des cartes des sections "nos services" & "nous contacter" ?
+
+Toutes les pages
+Inclure header/footer sur toutes les pages
+
+Services
+A FAIRE
+
+Contact
+A FAIRE (choisir un simple mailto ou backend)
+
+Projets
+A compléter plus tard
