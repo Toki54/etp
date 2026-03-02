@@ -35,7 +35,7 @@
         <a class="nav__link" href="projets.html">Nos projets</a>
         -->
 
-        <a class="nav__link" href="contact.html">Contact</a>
+        <a class="nav__link" href="contact.html">Nous contacter</a>
 
         <button class="btn btn--ghost" id="themeBtn" type="button" aria-label="Basculer le thème">
           <img src="assets/icon-theme-dark.png" alt="Thème">
@@ -47,7 +47,7 @@
   <main>
     <section class="page-hero">
       <div class="container">
-        <p class="badge">Formulaire validé • Compteur • Feedback JS</p>
+        <p class="badge">Formulaire live • Boutons actifs quand c’est OK</p>
         <h1>Contact</h1>
         <p class="lead">Explique ton besoin. Même si c’est flou : on le rend clair.</p>
       </div>
@@ -56,13 +56,23 @@
     <section class="section">
       <div class="container">
         <div class="contact-grid">
-          <aside class="sidecard" data-animate="reveal">
+          <!--<aside class="sidecard" data-animate="reveal">
             <h3>Infos</h3>
 
             <div class="info-row">
               <span class="info-label">Email</span>
-              <span class="info-value" id="contactEmail">contact@exemple.com</span>
+
+              <a class="info-value link" id="contactEmail"
+                 href="mailto:nico54.jeangeorges@gmail.com?subject=Demande%20de%20contact%20-%20ETP%20Dev">
+                nico54.jeangeorges@gmail.com
+              </a>
+
               <button class="btn btn--secondary btn--small" type="button" id="copyEmail">Copier</button>
+
+              <a class="btn btn--secondary btn--small"
+                 href="mailto:nico54.jeangeorges@gmail.com?subject=Demande%20de%20contact%20-%20ETP%20Dev">
+                Envoyer un mail
+              </a>
             </div>
 
             <div class="info-row">
@@ -79,6 +89,7 @@
               <li>Délai + budget</li>
             </ul>
           </aside>
+          -->
 
           <form class="form" id="contactForm" novalidate data-animate="reveal">
             <div class="form__row form__row--2">
@@ -90,7 +101,7 @@
 
               <div class="field">
                 <label for="email">Email</label>
-                <input id="email" name="email" type="email" placeholder="nico@email.com" required />
+                <input id="email" name="email" type="email" placeholder="Votre adresse mail" required />
                 <small class="error" data-error-for="email"></small>
               </div>
             </div>
@@ -115,12 +126,20 @@
               </div>
             </div>
 
+            <!-- ✅ TES 2 BOUTONS ICI (à la place de "Valider") -->
             <div class="form__actions">
-              <button class="btn btn--primary" id="sendBtn" type="submit">
-                Envoyer
-                <span class="btn-spinner" aria-hidden="true"></span>
-              </button>
-              <p class="muted" id="formNote" aria-live="polite"></p>
+              <div style="display:flex; gap:12px; flex-wrap:wrap; margin-top: 12px;">
+                <a class="btn btn--primary" id="sendViaGmail" href="#" target="_blank" rel="noopener noreferrer" aria-disabled="true">
+                  Ouvrir Gmail (web)
+                </a>
+                <a class="btn btn--secondary" id="sendViaMailto" href="#" aria-disabled="true">
+                  Ouvrir mon appli mail
+                </a>
+              </div>
+
+              <p class="muted" id="formNote" aria-live="polite">
+                Remplis tout : les boutons s’activeront automatiquement.
+              </p>
             </div>
           </form>
         </div>

@@ -24,7 +24,6 @@
 			burger.setAttribute("aria-expanded", String(isOpen));
 		});
 
-		// close on click link
 		$$(".nav__link", nav).forEach((link) => {
 			link.addEventListener("click", () => {
 				nav.classList.remove("is-open");
@@ -100,7 +99,6 @@
 			},
 			{ threshold: 0.12 },
 		);
-
 		revealEls.forEach((el) => io.observe(el));
 	}
 
@@ -113,7 +111,7 @@
 
 		const step = (t) => {
 			const p = Math.min(1, (t - t0) / duration);
-			const eased = 1 - Math.pow(1 - p, 3); // easeOutCubic
+			const eased = 1 - Math.pow(1 - p, 3);
 			const val = Math.round(start + (to - start) * eased);
 			el.textContent = String(val);
 			if (p < 1) requestAnimationFrame(step);
@@ -165,16 +163,12 @@
 		el.addEventListener("mouseleave", onLeave);
 	});
 
-	// SERVICES: estimation builder
 	const estimateTotalEl = $("#estimateTotal");
 	const estimateItemsEl = $("#estimateItems");
 	const estimateHint = $("#estimateHint");
 	const resetBtn = $("#resetEstimate");
 
-	const state = {
-		total: 0,
-		items: [], // {name, price}
-	};
+	const state = { total: 0, items: [] };
 
 	const animateNumber = (from, to, render) => {
 		const duration = 350;
@@ -287,141 +281,11 @@
 				btn.setAttribute("aria-expanded", String(!isOpen));
 				const icon = btn.querySelector(".accordion__icon");
 				if (icon) icon.textContent = isOpen ? "+" : "–";
-
-				if (isOpen) {
-					panel.hidden = true;
-				} else {
-					panel.hidden = false;
-				}
+				panel.hidden = isOpen;
 			});
 		});
 	});
 
-	/*
-	// =========================================================
-	// PROJETS: filter + search + modal (désactivé pour le moment)
-	// =========================================================
-
-	const chips = $$(".chip");
-	const projectsGrid = $("#projectsGrid");
-	const projectSearch = $("#projectSearch");
-
-	const filterState = { tag: "all", q: "" };
-
-	const applyProjectFilter = () => {
-		if (!projectsGrid) return;
-		const cards = $$(".project-card", projectsGrid);
-
-		cards.forEach((card) => {
-			const tags = (card.getAttribute("data-tags") || "").toLowerCase();
-			const title = (card.getAttribute("data-title") || "").toLowerCase();
-			const text = (card.textContent || "").toLowerCase();
-
-			const matchTag =
-				filterState.tag === "all" ? true : tags.includes(filterState.tag);
-			const matchQ = filterState.q
-				? title.includes(filterState.q) || text.includes(filterState.q)
-				: true;
-
-			card.style.display = matchTag && matchQ ? "" : "none";
-		});
-	};
-
-	if (chips.length && projectsGrid) {
-		chips.forEach((chip) => {
-			chip.addEventListener("click", () => {
-				chips.forEach((c) => c.classList.remove("is-active"));
-				chip.classList.add("is-active");
-				filterState.tag = chip.getAttribute("data-filter") || "all";
-				applyProjectFilter();
-			});
-		});
-	}
-
-	if (projectSearch && projectsGrid) {
-		projectSearch.addEventListener("input", () => {
-			filterState.q = projectSearch.value.trim().toLowerCase();
-			applyProjectFilter();
-		});
-	}
-
-	const modal = $("#projectModal");
-	const modalTitle = $("#modalTitle");
-	const modalTags = $("#modalTags");
-	const modalDesc = $("#modalDesc");
-	const modalStack = $("#modalStack");
-	const modalResult = $("#modalResult");
-
-	const openModal = (data) => {
-		if (!modal) return;
-		if (modalTitle) modalTitle.textContent = data.title || "Projet";
-		if (modalDesc) modalDesc.textContent = data.desc || "";
-
-		if (modalTags) {
-			modalTags.innerHTML = "";
-			(data.tags || []).forEach((t) => {
-				const s = document.createElement("span");
-				s.className = "tag";
-				s.textContent = t;
-				modalTags.appendChild(s);
-			});
-		}
-
-		if (modalStack) {
-			modalStack.innerHTML = "";
-			(data.stack || []).forEach((sv) => {
-				const p = document.createElement("span");
-				p.className = "pill";
-				p.textContent = sv;
-				modalStack.appendChild(p);
-			});
-		}
-
-		if (modalResult) modalResult.textContent = data.result || "";
-
-		modal.classList.add("is-open");
-		modal.setAttribute("aria-hidden", "false");
-		document.body.style.overflow = "hidden";
-	};
-
-	const closeModal = () => {
-		if (!modal) return;
-		modal.classList.remove("is-open");
-		modal.setAttribute("aria-hidden", "true");
-		document.body.style.overflow = "";
-	};
-
-	$$(".open-project").forEach((btn) => {
-		btn.addEventListener("click", () => {
-			try {
-				const raw = btn.getAttribute("data-project") || "{}";
-				const data = JSON.parse(raw);
-				openModal(data);
-			} catch {
-				openModal({
-					title: "Projet",
-					tags: [],
-					desc: "Données invalides.",
-					stack: [],
-					result: "",
-				});
-			}
-		});
-	});
-
-	if (modal) {
-		modal.addEventListener("click", (e) => {
-			const t = e.target;
-			if (t && t.hasAttribute("data-close-modal")) closeModal();
-		});
-		document.addEventListener("keydown", (e) => {
-			if (e.key === "Escape" && modal.classList.contains("is-open"))
-				closeModal();
-		});
-	}
-	*/
-
-	// CONTACT: copy email + char count + validation + fake submit loading
 	const copyEmailBtn = $("#copyEmail");
 	const contactEmail = $("#contactEmail");
 	if (copyEmailBtn && contactEmail) {
@@ -442,17 +306,20 @@
 	const note = $("#formNote");
 	const msg = $("#message");
 	const charCount = $("#charCount");
-	const sendBtn = $("#sendBtn");
 
-	const setError = (fieldId, msg) => {
+	// Tes 2 boutons
+	const sendViaGmail = $("#sendViaGmail");
+	const sendViaMailto = $("#sendViaMailto");
+
+	const setError = (fieldId, msgText) => {
 		const input = $("#" + fieldId);
 		const field = input ? input.closest(".field") : null;
 		const errorEl = document.querySelector(`[data-error-for="${fieldId}"]`);
 		if (!input || !field || !errorEl) return;
 
-		if (msg) {
+		if (msgText) {
 			field.classList.add("is-invalid");
-			errorEl.textContent = msg;
+			errorEl.textContent = msgText;
 		} else {
 			field.classList.remove("is-invalid");
 			errorEl.textContent = "";
@@ -461,62 +328,98 @@
 
 	const isEmailValid = (email) => /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i.test(email);
 
-	if (msg && charCount) {
-		const upd = () => {
-			const len = (msg.value || "").length;
-			charCount.textContent = `${len} / 500`;
+	const setLinksEnabled = (enabled) => {
+		const apply = (el, on) => {
+			if (!el) return;
+			el.setAttribute("aria-disabled", on ? "false" : "true");
+			el.style.pointerEvents = on ? "auto" : "none";
+			el.style.opacity = on ? "1" : "0.6";
 		};
-		msg.addEventListener("input", upd);
-		upd();
-	}
+		apply(sendViaGmail, enabled);
+		apply(sendViaMailto, enabled);
+	};
 
-	if (form) {
-		form.addEventListener("submit", (e) => {
-			e.preventDefault();
+	const updateCharCount = () => {
+		if (!msg || !charCount) return;
+		const len = (msg.value || "").length;
+		charCount.textContent = `${len} / 500`;
+	};
 
-			const name = $("#name")?.value.trim() || "";
-			const email = $("#email")?.value.trim() || "";
-			const subject = $("#subject")?.value.trim() || "";
-			const message = $("#message")?.value.trim() || "";
+	const computeAndUpdateLinks = (showErrors) => {
+		if (!form) return false;
 
-			let ok = true;
+		const name = $("#name")?.value.trim() || "";
+		const email = $("#email")?.value.trim() || "";
+		const subject = $("#subject")?.value.trim() || "";
+		const message = $("#message")?.value.trim() || "";
 
-			if (name.length < 2) {
-				setError("name", "Nom trop court (min 2).");
-				ok = false;
-			} else setError("name", "");
-			if (!isEmailValid(email)) {
-				setError("email", "Email invalide.");
-				ok = false;
-			} else setError("email", "");
-			if (subject.length < 3) {
-				setError("subject", "Sujet trop court (min 3).");
-				ok = false;
-			} else setError("subject", "");
-			if (message.length < 10) {
-				setError("message", "Message trop court (min 10).");
-				ok = false;
-			} else setError("message", "");
+		const okName = name.length >= 2;
+		const okEmail = isEmailValid(email);
+		const okSubject = subject.length >= 3;
+		const okMessage = message.length >= 10;
 
-			if (!note) return;
+		const ok = okName && okEmail && okSubject && okMessage;
 
-			if (!ok) {
-				note.textContent = "Corrige les champs en rouge.";
-				return;
-			}
+		if (showErrors) {
+			setError("name", okName ? "" : "Nom trop court (min 2).");
+			setError("email", okEmail ? "" : "Email invalide.");
+			setError("subject", okSubject ? "" : "Sujet trop court (min 3).");
+			setError("message", okMessage ? "" : "Message trop court (min 10).");
+		}
 
-			if (sendBtn) sendBtn.classList.add("is-loading");
-			note.textContent = "Envoi en cours… (démo)";
-
-			setTimeout(() => {
-				if (sendBtn) sendBtn.classList.remove("is-loading");
+		if (!ok) {
+			setLinksEnabled(false);
+			if (note)
 				note.textContent =
-					"Message prêt ✅ (branche un backend pour l’envoi réel)";
-				form.reset();
-				if (msg && charCount) charCount.textContent = "0 / 500";
-			}, 900);
+					"Remplis tout : les boutons s’activeront automatiquement.";
+			return false;
+		}
+
+		const to = "nico54.jeangeorges@gmail.com";
+		const mailSubject = `ETP Dev - ${subject}`;
+		const body = `Nom: ${name}
+Email: ${email}
+
+Message:
+${message}
+`;
+
+		const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(to)}&su=${encodeURIComponent(mailSubject)}&body=${encodeURIComponent(body)}`;
+
+		const mailtoUrl = `mailto:${to}?subject=${encodeURIComponent(mailSubject)}&body=${encodeURIComponent(body)}`;
+
+		if (sendViaGmail) sendViaGmail.href = gmailUrl;
+		if (sendViaMailto) sendViaMailto.href = mailtoUrl;
+
+		setLinksEnabled(true);
+		if (note) note.textContent = "Prêt ✅ choisis Gmail ou ton appli mail.";
+		return true;
+	};
+
+	setLinksEnabled(false);
+	updateCharCount();
+	computeAndUpdateLinks(false);
+
+	["input", "change"].forEach((evt) => {
+		form?.addEventListener(evt, () => {
+			updateCharCount();
+			computeAndUpdateLinks(false);
 		});
-	}
+	});
+
+	const guardClick = (e) => {
+		const ok = computeAndUpdateLinks(true);
+		if (!ok) e.preventDefault();
+	};
+
+	sendViaGmail?.addEventListener("click", guardClick);
+	sendViaMailto?.addEventListener("click", guardClick);
+
+	// Bloque submit (si user appuie Entrée)
+	form?.addEventListener("submit", (e) => {
+		e.preventDefault();
+		computeAndUpdateLinks(true);
+	});
 
 	// Small helpers
 	function escapeHtml(str) {
