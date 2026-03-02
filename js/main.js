@@ -297,7 +297,11 @@
 		});
 	});
 
-	// PROJETS: filter + search + modal
+	/*
+	// =========================================================
+	// PROJETS: filter + search + modal (désactivé pour le moment)
+	// =========================================================
+
 	const chips = $$(".chip");
 	const projectsGrid = $("#projectsGrid");
 	const projectSearch = $("#projectSearch");
@@ -341,7 +345,6 @@
 		});
 	}
 
-	// Modal open/close
 	const modal = $("#projectModal");
 	const modalTitle = $("#modalTitle");
 	const modalTags = $("#modalTags");
@@ -416,6 +419,7 @@
 				closeModal();
 		});
 	}
+	*/
 
 	// CONTACT: copy email + char count + validation + fake submit loading
 	const copyEmailBtn = $("#copyEmail");
