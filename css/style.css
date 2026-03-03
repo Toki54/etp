@@ -24,7 +24,6 @@
   --max:1120px;
   --focus:0 0 0 3px rgba(34,211,238,.28);
 
-  /* ✅ Fond unique (pas de répétition/coupure) */
   --page-bg:
     radial-gradient(900px 520px at 14% 10%, rgba(124,58,237,.18), transparent 60%),
     radial-gradient(820px 460px at 88% 12%, rgba(34,211,238,.16), transparent 55%),
@@ -32,7 +31,6 @@
     linear-gradient(135deg, var(--bg), var(--bg), var(--bg));
 }
 
-/* ✅ Thème light : cartes blanches + bord + ombre + fond continu */
 html[data-theme="light"]{
   --bg:#f6f7ff;
   --bg2:#eef1ff;
@@ -48,7 +46,6 @@ html[data-theme="light"]{
 
   --focus:0 0 0 3px rgba(124,58,237,.18);
 
-  /* Même logique de fond, mais plus soft */
   --page-bg:
     radial-gradient(900px 520px at 14% 10%, rgba(124,58,237,.14), transparent 60%),
     radial-gradient(820px 460px at 88% 12%, rgba(34,211,238,.12), transparent 55%),
@@ -59,7 +56,6 @@ html[data-theme="light"]{
 *{box-sizing:border-box}
 html,body{height:100%; min-height:100%}
 
-/* ✅ Fond appliqué sur un calque FIXE = zéro coupure en scroll */
 body{
   margin:0;
   font-family:Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;

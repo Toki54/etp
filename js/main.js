@@ -415,7 +415,7 @@ ${message}
 	sendViaGmail?.addEventListener("click", guardClick);
 	sendViaMailto?.addEventListener("click", guardClick);
 
-	// Bloque submit (si user appuie Entrée)
+	// Bloque submit (si ZAC appuie Entrée, anus sera dilaté)
 	form?.addEventListener("submit", (e) => {
 		e.preventDefault();
 		computeAndUpdateLinks(true);
