@@ -1,3 +1,8 @@
+/* =========================================
+   css/style.css  (GLOBAL / COMMUN)
+   + CYBER ELITE HEADER (sans casser ton style)
+   ========================================= */
+
 :root{
   --bg:#070815;
   --bg2:#0b1024;
@@ -7,7 +12,10 @@
   --card:rgba(255,255,255,.06);
   --border:rgba(255,255,255,.12);
 
-
+  --accent:#9787b3;
+  --accent2:#22d3ee;
+  --accent3:#a3ff12;
+  --danger:#ff4d6d;
 
   --shadow:0 18px 60px rgba(0,0,0,.55);
   --shadow2:0 10px 28px rgba(0,0,0,.35);
@@ -56,6 +64,7 @@ body{
   background:transparent;
   position:relative;
 }
+
 body::before{
   content:"";
   position:fixed;
@@ -125,7 +134,7 @@ html[data-theme="light"] .pill{
 }
 
 /* ======================
-   HEADER / NAV
+   HEADER / NAV (CYBER ELITE)
    ====================== */
 .header{
   position:sticky;
@@ -134,10 +143,80 @@ html[data-theme="light"] .pill{
   backdrop-filter:blur(16px);
   background:rgba(7,8,21,.55);
   border-bottom:1px solid rgba(255,255,255,.06);
+  overflow:hidden;
 }
+
+/* scanlines + glow very léger */
+.header::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+  background:
+    linear-gradient(180deg, rgba(0,0,0,.22), rgba(0,0,0,.06)),
+    repeating-linear-gradient(
+      to bottom,
+      rgba(255,255,255,.025) 0px,
+      rgba(255,255,255,.025) 1px,
+      transparent 2px,
+      transparent 6px
+    );
+  opacity:.26;
+  mix-blend-mode:overlay;
+}
+
+.header::after{
+  content:"";
+  position:absolute;
+  left:-30%;
+  top:-80%;
+  width:160%;
+  height:260%;
+  pointer-events:none;
+  background:
+    radial-gradient(closest-side at 50% 50%, rgba(34,211,238,.10), transparent 65%);
+  filter:blur(10px);
+  opacity:.45;
+  animation:headerGlow 6.5s ease-in-out infinite;
+}
+
+@keyframes headerGlow{
+  0%,100%{transform:translateX(-2%) translateY(0) rotate(-6deg)}
+  50%{transform:translateX(2%) translateY(1%) rotate(-2deg)}
+}
+
+/* barre néon animée en bas */
+.header .header__inner{
+  position:relative;
+}
+.header .header__inner::after{
+  content:"";
+  position:absolute;
+  left:0;
+  right:0;
+  bottom:-14px;
+  height:1px;
+  background:
+    linear-gradient(90deg,
+      transparent,
+      rgba(124,58,237,.30),
+      rgba(34,211,238,.40),
+      rgba(163,255,18,.22),
+      transparent
+    );
+  opacity:.9;
+  filter:blur(.2px);
+}
+
 html[data-theme="light"] .header{
   background:rgba(246,247,255,.86);
   border-bottom:1px solid rgba(12,14,22,.10);
+}
+html[data-theme="light"] .header::before{
+  opacity:.14;
+}
+html[data-theme="light"] .header::after{
+  opacity:.18;
 }
 
 .header__inner{
@@ -153,19 +232,36 @@ html[data-theme="light"] .header{
   align-items:center;
   gap:12px;
   user-select:none;
+  position:relative;
 }
-.brand__name{font-weight:950;letter-spacing:-.03em}
 
-/* ✅ LOGO : assets/logo.png */
+/* ✅ LOGO (on garde ton logo, mais on le rend “elite”) */
 .brand__logo{
-  width: 90px;
-  height: 90px;
-  border-radius: 50%;
-  border: 2px solid green;
+  width: 100px;
+  height: 100px;
+  border-radius: 50px;              /* plus moderne que le rond */
+  border: 1px solid rgba(255,255,255,.14);
   overflow: hidden;
   display: flex;
   align-items: center;
   justify-content: center;
+  position:relative;
+  background:rgba(48, 229, 51, 0.534);
+  box-shadow:
+    0 0 0 1px rgba(241, 0, 0, 0.06) inset,
+    0 10px 30px rgba(0,0,0,.35);
+}
+
+.brand__logo::after{
+  content:"";
+  position:absolute;
+  inset:-2px;
+  border-radius: 20px;
+  pointer-events:none;
+  background:
+    linear-gradient(135deg, rgba(124,58,237,.35), rgba(34,211,238,.25), rgba(163,255,18,.18));
+  opacity:.22;
+  filter:blur(8px);
 }
 
 .brand__logo img{
@@ -173,11 +269,47 @@ html[data-theme="light"] .header{
   height: 100%;
   object-fit: cover;
   display: block;
-  
 }
-html[data-theme="light"] .brand__logo{
-  box-shadow:0 0 0 6px rgba(124,58,237,.10), 0 12px 30px rgba(12,14,22,.10);
+
+/* Nom “CRO'Codeur” en futuriste: dégradé + léger glow */
+.brand__name{
+  font-weight:950;
+  font-family: Orbitron, Inter, system-ui, sans-serif;
+  letter-spacing:-.03em;
+  line-height:1;
+  font-size: 18px;
+  text-transform: none;
+  position:relative;
+  padding-right:4px;
+  background:linear-gradient(90deg, rgba(163, 245, 162, 0.92), rgba(37, 250, 62, 0.92));
+  -webkit-background-clip:text;
+  background-clip:text;
+  color:transparent;
+  text-shadow:0 0 18px rgba(34,211,238,.10);
 }
+
+/* petit “spark” animé derrière le texte */
+.brand__name::after{
+  content:"";
+  position:absolute;
+  left:-8px;
+  top:50%;
+  width:10px;
+  height:10px;
+  border-radius:999px;
+  transform:translateY(-50%);
+  background:rgba(48, 252, 48, 0.9);
+  box-shadow:
+    0 0 0 6px rgba(141, 255, 1, 0.1),
+    0 0 18px rgba(7, 243, 105, 0.35);
+  opacity:.55;
+  animation:spark 2.6s ease-in-out infinite;
+}
+@keyframes spark{
+  0%,100%{transform:translateY(-50%) scale(.85);opacity:.45}
+  50%{transform:translateY(-50%) scale(1.05);opacity:.72}
+}
+
 .brand__logo .dot{display:none}
 
 /* Thème Image Taille */
@@ -203,30 +335,86 @@ html[data-theme="light"] .btn--ghost img{
   gap:10px;
 }
 
+/* Nav links: capsule + highlight + underline néon au hover */
 .nav__link{
   font-weight:900;
   color:var(--muted);
   padding:9px 12px;
   border-radius:999px;
   border:1px solid transparent;
-  transition:background .18s ease, color .18s ease, transform .12s ease, border-color .18s ease;
+  position:relative;
+  isolation:isolate;
+  transition:background .18s ease, color .18s ease, transform .12s ease, border-color .18s ease, box-shadow .18s ease;
 }
+
+/* highlight “glass” */
+.nav__link::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  border-radius:999px;
+  background:
+    radial-gradient(90px 40px at 20% 0%, rgba(34,211,238,.14), transparent 62%),
+    radial-gradient(80px 40px at 90% 100%, rgba(124,58,237,.14), transparent 62%),
+    rgba(255,255,255,.03);
+  opacity:0;
+  z-index:-1;
+  transform:translateY(1px);
+  transition:opacity .18s ease, transform .18s ease;
+}
+
+/* underline néon animé */
+.nav__link::after{
+  content:"";
+  position:absolute;
+  left:14px;
+  right:14px;
+  bottom:5px;
+  height:2px;
+  border-radius:999px;
+  background:linear-gradient(90deg, rgba(34,211,238,.0), rgba(131, 252, 1, 0.75), rgba(163,255,18,.35), rgba(34,211,238,.0));
+  opacity:0;
+  filter:blur(.2px);
+  transform:scaleX(.65);
+  transform-origin:center;
+  transition:opacity .18s ease, transform .18s ease;
+}
+
 .nav__link:hover{
   color:var(--text);
   background:rgba(255,255,255,.05);
   transform:translateY(-1px);
-  border-color:rgba(255,255,255,.08);
+  border-color:rgba(255,255,255,.10);
+  box-shadow:0 10px 26px rgba(0,0,0,.18);
 }
+.nav__link:hover::before{
+  opacity:1;
+  transform:translateY(0);
+}
+.nav__link:hover::after{
+  opacity:1;
+  transform:scaleX(1);
+}
+
 html[data-theme="light"] .nav__link:hover{
   background:rgba(12,14,22,.05);
   border-color:rgba(12,14,22,.10);
 }
 
+/* Active = “neon selected” */
 .nav__link.is-active{
   color:var(--text);
-  background:linear-gradient(135deg, rgba(124,58,237,.20), rgba(34,211,238,.14));
+  background:linear-gradient(135deg, rgba(124,58,237,.22), rgba(34,211,238,.14));
   border-color:rgba(255,255,255,.12);
+  box-shadow:
+    0 0 0 1px rgba(34,211,238,.08) inset,
+    0 12px 30px rgba(0,0,0,.22);
 }
+.nav__link.is-active::after{
+  opacity:1;
+  transform:scaleX(1);
+}
+
 html[data-theme="light"] .nav__link.is-active{
   border-color:rgba(12,14,22,.12);
 }
@@ -448,4 +636,3 @@ html[data-theme="light"] .footer{border-top:1px solid rgba(12,14,22,.10)}
     pointer-events:auto;
   }
 }
-
