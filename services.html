@@ -14,34 +14,30 @@
 </head>
 
 <body>
-  <header class="header">
-    <div class="container header__inner">
-      <a class="brand" href="index.html" aria-label="Accueil">
-        <span class="brand__logo">
-  <img src="assets/Logo.jpg" alt="Logo CRO'Codeur">
-</span>
-        <span class="brand__name">CRO'Codeur</span>
-      </a>
+<header class="header header--banner">
+  <div class="container header__inner">
 
-      <button class="burger" id="burger" type="button" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="nav">
-        <span></span><span></span><span></span>
+    <a class="brand brand--banner" href="index.html" aria-label="Accueil">
+      <img class="brand__banner brand__banner--dark" src="assets/bannerS.svg" alt="Bannière (dark)">
+      <img class="brand__banner brand__banner--light" src="assets/light.png" alt="Bannière (light)">
+    </a>
+
+    <button class="burger" id="burger" type="button" aria-label="Ouvrir le menu" aria-expanded="false"
+      aria-controls="nav">
+      <span></span><span></span><span></span>
+    </button>
+
+    <nav class="nav" id="nav" aria-label="Navigation principale">
+      <a class="nav__link" href="services.html">Nos services</a>
+      <a class="nav__link" href="contact.html">Nous contacter</a>
+
+      <button class="btn btn--ghost" id="themeBtn" type="button" aria-label="Basculer le thème">
+        <img src="assets/icon-theme-dark.png" alt="Thème">
       </button>
+    </nav>
 
-      <nav class="nav" id="nav" aria-label="Navigation principale">
-        <a class="nav__link" href="services.html">Nos services</a>
-
-        <!-- NOS PROJETS (désactivé pour le moment)
-        <a class="nav__link" href="projets.html">Nos projets</a>
-        -->
-
-        <a class="nav__link" href="contact.html">Nous contacter</a>
-
-        <button class="btn btn--ghost" id="themeBtn" type="button" aria-label="Basculer le thème">
-          <img src="assets/icon-theme-dark.png" alt="Thème">
-        </button>
-      </nav>
-    </div>
-  </header>
+  </div>
+</header>
 
   <main>
     <section class="page-hero">
