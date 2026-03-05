@@ -1,92 +1,214 @@
-.contact-grid{
-  display:grid;
-  grid-template-columns:1.15fr;
-  gap:14px;
-  align-items:start;
+/* =========================================
+   css/contact.css  (PAGE CONTACT)
+   Version Light : plus propre, plus premium
+   ========================================= */
+
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1.15fr;
+  gap: 14px;
+  align-items: start;
 }
 
-.info-row{
-  display:grid;
-  grid-template-columns:90px 1fr auto;
-  gap:10px;
-  align-items:center;
-  margin-top:10px;
-}
-.info-label{color:var(--muted);font-weight:950}
-.info-value{font-weight:950;word-break:break-word}
 
-/* Form */
-.form__row{display:grid;gap:12px;margin-bottom:12px}
-.form__row--2{grid-template-columns:1fr 1fr}
-
-.field label{display:block;font-weight:950;margin-bottom:6px}
-
-.field__label-row{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:10px;
+.info-row {
+  display: grid;
+  grid-template-columns: 90px 1fr auto;
+  gap: 10px;
+  align-items: center;
+  margin-top: 10px;
 }
 
-.field input, .field textarea{
-  width:100%;
-  border:1px solid rgba(255,255,255,.12);
-  background:rgba(0,0,0,.18);
-  color:var(--text);
-  border-radius:14px;
-  padding:11px 12px;
-  font:inherit;
+.info-label {
+  color: var(--muted);
+  font-weight: 950
 }
+
+.info-value {
+  font-weight: 950;
+  word-break: break-word
+}
+
+/* ======================
+   FORM
+   ====================== */
+.form {
+  position: relative;
+  overflow: hidden;
+}
+
+html[data-theme="light"] .form::before {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  pointer-events: none;
+  background:
+    radial-gradient(420px 180px at 12% 6%, rgba(124, 58, 237, .12), transparent 60%),
+    radial-gradient(420px 180px at 88% 10%, rgba(34, 211, 238, .10), transparent 60%);
+  opacity: .9;
+}
+
+.form__row {
+  display: grid;
+  gap: 12px;
+  margin-bottom: 12px;
+  position: relative;
+  z-index: 1;
+}
+
+.form__row--2 {
+  grid-template-columns: 1fr 1fr
+}
+
+.field {
+  position: relative;
+}
+
+.field label {
+  display: block;
+  font-weight: 950;
+  margin-bottom: 6px;
+  letter-spacing: -.01em;
+}
+
+.field__label-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.field input,
+.field textarea {
+  width: 100%;
+  border: 1px solid rgba(255, 255, 255, .12);
+  background: rgba(0, 0, 0, .18);
+  color: var(--text);
+  border-radius: 14px;
+  padding: 12px 12px;
+  font: inherit;
+  transition:
+    border-color .18s ease,
+    box-shadow .18s ease,
+    transform .12s ease,
+    background .18s ease;
+}
+
+.field textarea {
+  resize: vertical;
+  min-height: 150px
+}
+
+/* Focus */
+.field input:focus,
+.field textarea:focus {
+  outline: none;
+  box-shadow: var(--focus);
+  transform: translateY(-1px);
+}
+
+
 html[data-theme="light"] .field input,
-html[data-theme="light"] .field textarea{
-  background:rgba(255,255,255,.70);
-}
-.field input:focus, .field textarea:focus{
-  outline:none;
-  box-shadow:var(--focus);
+html[data-theme="light"] .field textarea {
+  background: rgba(255, 255, 255, .92);
+  border-color: rgba(12, 14, 22, .14);
+  box-shadow: 0 8px 18px rgba(12, 14, 22, .06);
 }
 
-.error{
-  display:block;
-  min-height:18px;
-  color:var(--danger);
-  margin-top:6px;
-  font-size:12px;
-  font-weight:900;
-}
-.field.is-invalid input, .field.is-invalid textarea{
-  border-color:rgba(255,77,109,.55);
-  box-shadow:0 0 0 3px rgba(255,77,109,.14);
+html[data-theme="light"] .field input::placeholder,
+html[data-theme="light"] .field textarea::placeholder {
+  color: rgba(12, 14, 22, .45);
 }
 
-.form__actions{
-  display:flex;
-  align-items:center;
-  gap:12px;
-  flex-wrap:wrap;
+html[data-theme="light"] .field input:focus,
+html[data-theme="light"] .field textarea:focus {
+  border-color: rgba(124, 58, 237, .30);
+  box-shadow:
+    0 0 0 4px rgba(124, 58, 237, .14),
+    0 12px 26px rgba(12, 14, 22, .10);
 }
 
-/* Spinner dans bouton */
-.btn-spinner{
-  width:0;height:0;
-  border-radius:999px;
-  border:2px solid rgba(255,255,255,.35);
-  border-top-color:rgba(255,255,255,.92);
-  opacity:0;
-  transition:opacity .18s ease;
-}
-.btn.is-loading .btn-spinner{
-  width:14px;height:14px;
-  opacity:1;
-  animation:spin .8s linear infinite;
-}
-@keyframes spin{to{transform:rotate(360deg)}}
 
-@media (max-width: 920px){
-  .contact-grid{grid-template-columns:1fr}
+.error {
+  display: block;
+  min-height: 18px;
+  color: var(--danger);
+  margin-top: 6px;
+  font-size: 12px;
+  font-weight: 900;
 }
 
-@media (max-width: 760px){
-  .form__row--2{grid-template-columns:1fr}
-  .info-row{grid-template-columns:1fr}
+.field.is-invalid input,
+.field.is-invalid textarea {
+  border-color: rgba(255, 77, 109, .55);
+  box-shadow: 0 0 0 3px rgba(255, 77, 109, .14);
+}
+
+html[data-theme="light"] .field.is-invalid input,
+html[data-theme="light"] .field.is-invalid textarea {
+  border-color: rgba(255, 77, 109, .55);
+  box-shadow:
+    0 0 0 4px rgba(255, 77, 109, .14),
+    0 12px 26px rgba(12, 14, 22, .10);
+}
+
+
+.form__actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+
+#formNote {
+  margin: 0;
+}
+
+
+html[data-theme="light"] a.btn[aria-disabled="true"] {
+  filter: saturate(.85);
+}
+
+
+.btn-spinner {
+  width: 0;
+  height: 0;
+  border-radius: 999px;
+  border: 2px solid rgba(255, 255, 255, .35);
+  border-top-color: rgba(255, 255, 255, .92);
+  opacity: 0;
+  transition: opacity .18s ease;
+}
+
+.btn.is-loading .btn-spinner {
+  width: 14px;
+  height: 14px;
+  opacity: 1;
+  animation: spin .8s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg)
+  }
+}
+
+/* ======================
+   RESPONSIVE
+   ====================== */
+@media (max-width: 920px) {
+  .contact-grid {
+    grid-template-columns: 1fr
+  }
+}
+
+@media (max-width: 760px) {
+  .form__row--2 {
+    grid-template-columns: 1fr
+  }
+
+  .info-row {
+    grid-template-columns: 1fr
+  }
 }
