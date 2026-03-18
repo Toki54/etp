@@ -75,13 +75,13 @@ html[data-theme="light"] {
 }
 
 * {
-  box-sizing: border-box
+  box-sizing: border-box;
 }
 
 html,
 body {
   height: 100%;
-  min-height: 100%
+  min-height: 100%;
 }
 
 body {
@@ -105,47 +105,47 @@ body::before {
 
 a {
   color: inherit;
-  text-decoration: none
+  text-decoration: none;
 }
 
 p {
-  margin: 0 0 14px
+  margin: 0 0 14px;
 }
 
 h1,
 h2,
 h3 {
   margin: 0 0 10px;
-  line-height: 1.12
+  line-height: 1.12;
 }
 
 h1 {
   font-size: clamp(28px, 4vw, 50px);
-  letter-spacing: -.035em
+  letter-spacing: -.035em;
 }
 
 h2 {
   font-size: clamp(20px, 3vw, 34px);
-  letter-spacing: -.02em
+  letter-spacing: -.02em;
 }
 
 h3 {
   font-size: 18px;
-  letter-spacing: -.01em
+  letter-spacing: -.01em;
 }
 
 .small {
-  font-size: 12px
+  font-size: 12px;
 }
 
 .muted {
-  color: var(--muted)
+  color: var(--muted);
 }
 
 .lead {
   font-size: 16px;
   color: var(--muted);
-  max-width: 72ch
+  max-width: 72ch;
 }
 
 .container {
@@ -154,11 +154,11 @@ h3 {
 }
 
 .section {
-  padding: 56px 0
+  padding: 56px 0;
 }
 
 .page-hero {
-  padding: 46px 0 12px
+  padding: 46px 0 12px;
 }
 
 .badge {
@@ -186,14 +186,14 @@ html[data-theme="light"] .badge {
 }
 
 html[data-theme="light"] .divider {
-  background: rgba(12, 14, 22, .10)
+  background: rgba(12, 14, 22, .10);
 }
 
 .pill-row {
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
-  margin-top: 10px
+  margin-top: 10px;
 }
 
 .pill {
@@ -209,6 +209,10 @@ html[data-theme="light"] .pill {
   border: 1px solid rgba(12, 14, 22, .12);
   background: rgba(255, 255, 255, .78);
 }
+
+/* ======================
+   HEADER / BANNIÈRE / NAV
+   ====================== */
 
 .header {
   position: relative;
@@ -237,6 +241,7 @@ html[data-theme="light"] .header {
   overflow: hidden;
   position: relative;
   user-select: none;
+  isolation: isolate;
   border: 1px solid rgba(255, 255, 255, .10);
   box-shadow:
     0 10px 30px rgba(0, 0, 0, .45),
@@ -252,6 +257,11 @@ html[data-theme="light"] .brand {
     0 0 36px rgba(34, 211, 238, .10);
 }
 
+.brand>* {
+  position: relative;
+  z-index: 1;
+}
+
 .brand__banner {
   width: 100%;
   height: 100%;
@@ -261,19 +271,19 @@ html[data-theme="light"] .brand {
 }
 
 .brand__banner--light {
-  display: none
+  display: none;
 }
 
 .brand__banner--dark {
-  display: block
+  display: block;
 }
 
 html[data-theme="light"] .brand__banner--light {
-  display: block
+  display: block;
 }
 
 html[data-theme="light"] .brand__banner--dark {
-  display: none
+  display: none;
 }
 
 .brand::after {
@@ -293,19 +303,6 @@ html[data-theme="light"] .brand__banner--dark {
   animation: bannerGlow 4s ease-in-out infinite alternate;
   pointer-events: none;
   opacity: .99;
-}
-
-.brand {
-  isolation: isolate
-}
-
-.brand>* {
-  position: relative;
-  z-index: 1
-}
-
-.brand::after {
-  z-index: 2
 }
 
 @keyframes bannerGlow {
@@ -331,18 +328,14 @@ html[data-theme="light"] .brand__banner--dark {
   right: var(--banner-pad);
   bottom: var(--banner-pad);
   z-index: 4;
-
   display: flex;
   align-items: center;
   gap: var(--nav-gap);
-
   padding: var(--nav-pad);
   border-radius: 18px;
-
   background: rgba(0, 0, 0, .22);
   border: 1px solid rgba(255, 255, 255, .14);
   backdrop-filter: blur(16px);
-
   box-shadow:
     0 10px 26px rgba(0, 0, 0, .30),
     0 0 24px rgba(124, 58, 237, .10),
@@ -353,11 +346,6 @@ html[data-theme="light"] .nav {
   background: rgba(221, 249, 246, 0.601);
   border: 1px solid rgba(12, 14, 22, .12);
   box-shadow: 0 14px 30px rgba(12, 14, 22, .10);
-}
-
-html[data-theme="light"] .nav__link {
-    color: rgba(0, 37, 160, 0.792);
-    background: rgba(255, 255, 255, 0.98);
 }
 
 .nav__link {
@@ -371,6 +359,11 @@ html[data-theme="light"] .nav__link {
   white-space: nowrap;
 }
 
+html[data-theme="light"] .nav__link {
+  color: rgba(0, 37, 160, 0.792);
+  background: rgba(255, 255, 255, 0.98);
+}
+
 .nav__link:hover {
   color: #f5f2f2;
   background: rgba(255, 255, 255, .08);
@@ -378,10 +371,21 @@ html[data-theme="light"] .nav__link {
   border-color: rgba(255, 255, 255, .18);
 }
 
+html[data-theme="light"] .nav__link:hover {
+  color: rgba(0, 37, 160, 0.95);
+  background: rgba(255, 255, 255, 1);
+  border-color: rgba(12, 14, 22, .14);
+}
+
 .nav__link.is-active {
   color: #fff;
   background: linear-gradient(135deg, rgba(124, 58, 237, .32), rgba(34, 211, 238, .22));
   border-color: rgba(255, 255, 255, .20);
+}
+
+html[data-theme="light"] .nav__link.is-active {
+  color: rgba(0, 37, 160, 0.95);
+  border-color: rgba(12, 14, 22, .14);
 }
 
 #themeBtn img {
@@ -421,12 +425,12 @@ html[data-theme="light"] .btn--ghost img {
 }
 
 .btn:active {
-  transform: translateY(0)
+  transform: translateY(0);
 }
 
 .btn:focus {
   outline: none;
-  box-shadow: var(--focus)
+  box-shadow: var(--focus);
 }
 
 html[data-theme="light"] .btn {
@@ -465,13 +469,13 @@ html[data-theme="light"] .btn--secondary {
 }
 
 .btn--ghost {
-  background: transparent
+  background: transparent;
 }
 
 .btn--small {
   padding: 8px 10px;
   border-radius: 12px;
-  font-weight: 950
+  font-weight: 950;
 }
 
 .link {
@@ -482,7 +486,7 @@ html[data-theme="light"] .btn--secondary {
 }
 
 .link:hover {
-  text-decoration: underline
+  text-decoration: underline;
 }
 
 .burger {
@@ -493,34 +497,58 @@ html[data-theme="light"] .btn--secondary {
   display: none;
   align-items: center;
   justify-content: center;
+  width: 52px;
+  height: 52px;
   padding: 0;
-  width: 46px;
-  height: 46px;
-  border: none;
-  background: transparent;
-  border-radius: 14px;
+  border: 1px solid rgba(255, 255, 255, .14);
+  border-radius: 16px;
+  background: rgba(0, 0, 0, .28);
+  backdrop-filter: blur(16px);
   cursor: pointer;
 }
 
-.burger img {
-  width: 35px;
-  height: 35px;
-  display: block;
+html[data-theme="light"] .burger {
+  border-color: rgba(12, 14, 22, .12);
+  background: rgba(255, 255, 255, .78);
 }
 
+.burger span {
+  display: block;
+  width: 22px;
+  height: 2px;
+  background: var(--text);
+  margin: 4px 0;
+  border-radius: 2px;
+  opacity: .92;
+}
 
+.burger img {
+  width: 22px;
+  height: 22px;
+  display: block;
+  object-fit: contain;
+}
 
 html[data-theme="light"] .burger img {
   content: url("../assets/menuBL.png");
 }
 
+.burger:focus {
+  outline: none;
+  box-shadow: var(--focus);
+}
+
+/* ======================
+   CARTES / BLOCS
+   ====================== */
+
 .grid {
   display: grid;
-  gap: 14px
+  gap: 14px;
 }
 
 .grid--3 {
-  grid-template-columns: repeat(2, 1fr)
+  grid-template-columns: repeat(2, 1fr);
 }
 
 .tile,
@@ -565,11 +593,11 @@ html[data-theme="light"] .service-card:hover {
 .list {
   margin: 10px 0 0;
   padding-left: 18px;
-  color: var(--muted)
+  color: var(--muted);
 }
 
 .list li {
-  margin: 6px 0
+  margin: 6px 0;
 }
 
 .tag {
@@ -587,7 +615,7 @@ html[data-theme="light"] .tag {
 }
 
 [data-tilt] {
-  will-change: transform
+  will-change: transform;
 }
 
 [data-animate="reveal"] {
@@ -598,8 +626,12 @@ html[data-theme="light"] .tag {
 
 .is-visible {
   opacity: 1 !important;
-  transform: translateY(0) !important
+  transform: translateY(0) !important;
 }
+
+/* ======================
+   FOOTER
+   ====================== */
 
 .footer {
   padding: 28px 0 36px;
@@ -607,7 +639,7 @@ html[data-theme="light"] .tag {
 }
 
 html[data-theme="light"] .footer {
-  border-top: 1px solid rgba(12, 14, 22, .10)
+  border-top: 1px solid rgba(12, 14, 22, .10);
 }
 
 .footer__inner {
@@ -618,21 +650,17 @@ html[data-theme="light"] .footer {
   color: var(--muted);
 }
 
+/* ======================
+   RESPONSIVE
+   ====================== */
+
 @media (max-width: 920px) {
   .header__inner {
-    height: var(--banner-h-920)
+    height: var(--banner-h-920);
   }
 
   .brand {
-    height: var(--banner-h-920)
-  }
-
-  :root {
-    --banner-pad: 14px;
-    --nav-gap: 10px;
-    --nav-pad: 10px;
-    --nav-link-pad-y: 9px;
-    --nav-link-pad-x: 12px;
+    height: var(--banner-h-920);
   }
 
   .nav {
@@ -641,27 +669,21 @@ html[data-theme="light"] .footer {
   }
 
   .brand__banner {
-    object-position: 60% 50%
+    object-position: 60% 50%;
   }
 }
 
 @media (max-width: 550px) {
   .header__inner {
-    height: var(--banner-h-550)
+    height: var(--banner-h-550);
   }
 
   .brand {
-    height: var(--banner-h-550)
-  }
-
-  :root {
-    --banner-pad: 10px;
-    --nav-pad: 10px;
+    height: var(--banner-h-550);
   }
 
   .burger {
     display: inline-flex;
-
   }
 
   .nav {
@@ -688,10 +710,10 @@ html[data-theme="light"] .footer {
   }
 
   .brand__banner {
-    object-position: 70% 50%
+    object-position: 70% 50%;
   }
 
   .brand::after {
-    opacity: .92
+    opacity: .92;
   }
 }
