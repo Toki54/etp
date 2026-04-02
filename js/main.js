@@ -163,111 +163,6 @@
 		el.addEventListener("mouseleave", onLeave);
 	});
 
-	const estimateTotalEl = $("#estimateTotal");
-	const estimateItemsEl = $("#estimateItems");
-	const estimateHint = $("#estimateHint");
-	const resetBtn = $("#resetEstimate");
-
-	const state = { total: 0, items: [] };
-
-	const animateNumber = (from, to, render) => {
-		const duration = 350;
-		const t0 = performance.now();
-		const step = (t) => {
-			const p = Math.min(1, (t - t0) / duration);
-			const eased = 1 - Math.pow(1 - p, 3);
-			const val = Math.round(from + (to - from) * eased);
-			render(val);
-			if (p < 1) requestAnimationFrame(step);
-		};
-		requestAnimationFrame(step);
-	};
-
-	const renderEstimate = () => {
-		if (!estimateTotalEl || !estimateItemsEl) return;
-
-		estimateItemsEl.innerHTML = "";
-		state.items.forEach((it, idx) => {
-			const row = document.createElement("div");
-			row.className = "estimate-item";
-			row.innerHTML = `
-        <div>
-          <strong>${escapeHtml(it.name)}</strong>
-          <div class="muted small">${it.price}€</div>
-        </div>
-        <button type="button" data-remove="${idx}">Retirer</button>
-      `;
-			estimateItemsEl.appendChild(row);
-		});
-
-		estimateItemsEl.querySelectorAll("[data-remove]").forEach((btn) => {
-			btn.addEventListener("click", () => {
-				const i = Number(btn.getAttribute("data-remove"));
-				const removed = state.items.splice(i, 1)[0];
-				if (!removed) return;
-
-				const old = state.total;
-				state.total = Math.max(0, state.total - removed.price);
-
-				animateNumber(
-					old,
-					state.total,
-					(v) => (estimateTotalEl.textContent = String(v)),
-				);
-				if (estimateHint)
-					estimateHint.textContent = state.items.length
-						? "Tu peux retirer des éléments si besoin."
-						: "Clique “Ajouter au devis” sur les cartes.";
-				renderEstimate();
-			});
-		});
-	};
-
-	const addToEstimateBtns = $$(".add-to-estimate");
-	if (addToEstimateBtns.length && estimateTotalEl && estimateItemsEl) {
-		addToEstimateBtns.forEach((btn) => {
-			btn.addEventListener("click", () => {
-				const card = btn.closest("[data-price]");
-				if (!card) return;
-
-				const name = card.querySelector("h3")?.textContent?.trim() || "Service";
-				const price = Number(card.getAttribute("data-price") || "0");
-
-				state.items.push({ name, price });
-
-				const old = state.total;
-				state.total += price;
-
-				animateNumber(
-					old,
-					state.total,
-					(v) => (estimateTotalEl.textContent = String(v)),
-				);
-				if (estimateHint)
-					estimateHint.textContent =
-						"Total indicatif (hors options spécifiques).";
-
-				btn.classList.add("btn--primary");
-				setTimeout(() => btn.classList.remove("btn--primary"), 220);
-
-				renderEstimate();
-			});
-		});
-
-		if (resetBtn) {
-			resetBtn.addEventListener("click", () => {
-				const old = state.total;
-				state.total = 0;
-				state.items = [];
-				animateNumber(old, 0, (v) => (estimateTotalEl.textContent = String(v)));
-				if (estimateHint)
-					estimateHint.textContent =
-						"Clique “Ajouter au devis” sur les cartes.";
-				renderEstimate();
-			});
-		}
-	}
-
 	// FAQ accordion
 	const accordions = $$("[data-accordion]");
 	accordions.forEach((acc) => {
@@ -415,13 +310,11 @@ ${message}
 	sendViaGmail?.addEventListener("click", guardClick);
 	sendViaMailto?.addEventListener("click", guardClick);
 
-	// Bloque submit (si ZAC appuie Entrée, anus sera dilaté)
 	form?.addEventListener("submit", (e) => {
 		e.preventDefault();
 		computeAndUpdateLinks(true);
 	});
 
-	// Small helpers
 	function escapeHtml(str) {
 		return String(str)
 			.replaceAll("&", "&amp;")
