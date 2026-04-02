@@ -280,10 +280,16 @@ html[data-theme="light"] .brand {
 
 html[data-theme="light"] .brand__banner--light {
   display: block;
+  width: 108%;
+  left: -33px;
+  top: 2px;
 }
 
 html[data-theme="light"] .brand__banner--dark {
   display: none;
+  width: 108%;
+  left: -33px;
+  top: 2px;
 }
 
 .brand::after {
