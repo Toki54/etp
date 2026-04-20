@@ -639,21 +639,84 @@ html[data-theme="light"] .tag {
    FOOTER
    ====================== */
 
-.footer {
-  padding: 28px 0 36px;
-  border-top: 1px solid rgba(255, 255, 255, .08);
-}
 
-html[data-theme="light"] .footer {
-  border-top: 1px solid rgba(12, 14, 22, .10);
-}
 
 .footer__inner {
+    display: flex;
+      justify-content: space-between;
+      gap: 30px;
+      flex-wrap: wrap;
+      padding-bottom: 10px;
+      border-bottom: 1px solid rgba(255, 255, 255, .08); /* Mettre Top si tu veux border en haut du pied*/
+      margin-bottom: 10px;
+      padding-top: 16px;
+}
+
+html[data-theme="light"] .footer__inner {
+  border-bottom-color: rgba(12, 14, 22, .10);
+}
+
+.footer__brand {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.footer__logo {
+  font-size: 18px;
+  font-weight: 800;
+  color: var(--text);
+  letter-spacing: -.03em;
+}
+
+.footer__cols {
+  display: flex;
+  gap: 40px;
+  flex-wrap: wrap;
+}
+
+.footer__col {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.footer__col-title {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--muted);
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  margin: 0 0 2px;
+}
+
+.footer__bottom {
   display: flex;
   justify-content: space-between;
-  gap: 12px;
+  align-items: center;
   flex-wrap: wrap;
+  gap: 12px;
   color: var(--muted);
+  padding-bottom: 15px;
+}
+
+.footer__legal {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.footer__privacy {
+  color: var(--accent2);
+  border: 1px solid rgba(34, 211, 238, .25);
+  padding: 3px 10px;
+  border-radius: 999px;
+  font-size: 12px;
+  transition: background .15s;
+}
+
+.footer__privacy:hover {
+  background: rgba(34, 211, 238, .08);
 }
 
 /* ======================
