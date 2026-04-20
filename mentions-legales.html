@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="fr" data-theme="dark">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta name="description"
+        content="ETP Dev — Développement web : sites vitrines, formulaires, web apps, maintenance." />
+    <title>Mentions Légales — CRO'Coding</title>
+
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;800&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/index.css" />
+
+</head>
+
+<body>
+    <header class="header header--banner">
+        <div class="container header__inner">
+
+            <a class="brand brand--banner" href="index.html" aria-label="Accueil">
+                <img id="darkimg" class="brand__banner brand__banner--dark" src="assets/banner.png"
+                    alt="Bannière (dark)">
+                <img class="brand__banner brand__banner--light" src="assets/light.png" alt="Bannière (light)">
+            </a>
+
+            <button class="burger" id="burger" type="button" aria-label="Ouvrir le menu" aria-expanded="false"
+                aria-controls="nav">
+                <img src="assets/menuB.png" alt="Menu">
+            </button>
+
+            <nav class="nav" id="nav" aria-label="Navigation principale">
+                <a class="nav__link" href="services.html">Nos services</a>
+                <!-- <a class="nav__link" href="projets.html">Nos projets</a> -->
+                <a class="nav__link" href="contact.html">Nous contacter</a>
+
+                <button class="btn btn--ghost" id="themeBtn" type="button" aria-label="Basculer le thème">
+                    <img src="assets/icon-theme-dark.png" alt="Thème">
+                </button>
+            </nav>
+
+        </div>
+    </header>
+
+    <main>
+        <section class="page-hero">
+            <div class="container">
+                <p class="">
+                    © 2025 – 2026 CRO'Coding — Tous droits réservés. L'ensemble des éléments présents sur ce site
+                    (textes, visuels, code
+                    source, logo, structure) constitue des œuvres protégées par le droit d'auteur au sens du Code de la
+                    propriété
+                    intellectuelle français. Toute reproduction, représentation, modification, publication, transmission
+                    ou
+                    dénaturation, totale ou partielle, par quelque moyen que ce soit, est strictement interdite sans
+                    l'autorisation
+                    écrite préalable de CRO'Coding. Pour toute demande d'utilisation : <b
+                        style="color:green">contact@crocoding.fr</b>
+                </p>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container footer__inner">
+            <div class="footer__brand">
+                <span class="footer__logo">CRO<span style="color:var(--accent2)">'</span>Coding</span>
+                <p class="muted small">Développement web propre, rapide et livrable.</p>
+                <div class="pill-row" style="margin-top:6px">
+                    <span class="pill">Responsive</span>
+                    <span class="pill">SEO</span>
+                    <span class="pill">Sécurité</span>
+                </div>
+            </div>
+
+            <div class="footer__cols">
+                <div class="footer__col">
+                    <a class="link" href="services.html">Nos services & prix</a>
+                    <a class="link" href="contact.html">Nous contacter</a>
+                    <a class="link" href="contact.html">Demander un devis</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="container footer__bottom">
+            <p class="muted small">© 2025 – <span id="year"></span> CRO'Coding — Tous droits réservés.</p>
+            <div class="footer__legal">
+                <a class="footer__privacy" href="mentions-legales.html">Mentions légales</a>
+                <span class="muted">·</span>
+                <a class="footer__privacy" href="politique-de-confidentialite.html">Politique de confidentialité</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
