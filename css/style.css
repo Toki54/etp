@@ -64,7 +64,7 @@ html[data-theme="light"] {
   --banner-h-920: 190px;
   --banner-h-550: 110px;
 
-  --banner-pad: 14px;
+  --banner-pad: 8px;
 
   --nav-gap: 10px;
   --nav-pad: 10px;
@@ -264,40 +264,36 @@ html[data-theme="light"] .brand {
   z-index: 1;
 }
 
+/* ======================
+   BANNIÈRES CADRAGE IDENTIQUE
+   ====================== */
+
 .brand__banner {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  display: block;
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: 50% 50%;
-  display: block;
+  object-position: center center;
 }
 
 .brand__banner--light {
   display: none;
+  width: 103%;
+    left: -19px;
+    top: -9px;
 }
 
 .brand__banner--dark {
   display: block;
-}
-
-.brand__banner--light,
-.brand__banner--dark {
-  position: absolute;
-  inset: 0;
   width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: 50% 50%;
+   
 }
 
 html[data-theme="light"] .brand__banner--light {
   display: block;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: 50% 50%;
-  position: absolute;
-  inset: 0;
 }
 
 html[data-theme="light"] .brand__banner--dark {
