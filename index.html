@@ -10,37 +10,38 @@
 
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;800&display=swap" rel="stylesheet">  
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;800&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="css/style.css" />
   <link rel="stylesheet" href="css/index.css" />
 </head>
 
 <body>
-<header class="header header--banner">
-  <div class="container header__inner">
+  <header class="header header--banner">
+    <div class="container header__inner">
 
-    <a class="brand brand--banner" href="index.html" aria-label="Accueil">
-      <img id="darkimg"  class="brand__banner brand__banner--dark" src="assets/banner.png" alt="Bannière (dark)">
-      <img class="brand__banner brand__banner--light" src="assets/light.png" alt="Bannière (light)">
-    </a>
+      <a class="brand brand--banner" href="index.html" aria-label="Accueil">
+        <img id="darkimg" class="brand__banner brand__banner--dark" src="assets/banner.png" alt="Bannière (dark)">
+        <img class="brand__banner brand__banner--light" src="assets/light.png" alt="Bannière (light)">
+      </a>
 
-    <button class="burger" id="burger" type="button" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="nav">
-      <img src="assets/menuB.png" alt="Menu">
-    </button>
-
-    <nav class="nav" id="nav" aria-label="Navigation principale">
-      <a class="nav__link" href="services.html">Nos services</a>
-      <!-- <a class="nav__link" href="projets.html">Nos projets</a> -->
-      <a class="nav__link" href="contact.html">Nous contacter</a>
-
-      <button class="btn btn--ghost" id="themeBtn" type="button" aria-label="Basculer le thème">
-        <img src="assets/icon-theme-dark.png" alt="Thème">
+      <button class="burger" id="burger" type="button" aria-label="Ouvrir le menu" aria-expanded="false"
+        aria-controls="nav">
+        <img src="assets/menuB.png" alt="Menu">
       </button>
-    </nav>
 
-  </div>
-</header>
+      <nav class="nav" id="nav" aria-label="Navigation principale">
+        <a class="nav__link" href="services.html">Nos services</a>
+        <!-- <a class="nav__link" href="projets.html">Nos projets</a> -->
+        <a class="nav__link" href="contact.html">Nous contacter</a>
+
+        <button class="btn btn--ghost" id="themeBtn" type="button" aria-label="Basculer le thème">
+          <img src="assets/icon-theme-dark.png" alt="Thème">
+        </button>
+      </nav>
+
+    </div>
+  </header>
 
   <main>
     <section class="hero">
@@ -99,7 +100,7 @@
                 <a class="link" href="projets.html">Voir des exemples →</a>
                 <span class="status" id="statusBadge">● Disponible</span>
               </div> -->
-              
+
             </div>
           </div>
           <div class="glow" aria-hidden="true"></div>
@@ -115,7 +116,7 @@
 
         <div class="grid grid--3">
           <!-- Récap services -->
-          <article class="tile" data-tilt data-animate="reveal"             style="
+          <article class="tile" data-tilt data-animate="reveal" style="
               display: flex;
               flex-direction: column;
               justify-content: space-evenly;">
@@ -137,8 +138,7 @@
           </article> -->
 
           <!-- Nous contacter -->
-          <article class="tile" data-tilt data-animate="reveal" 
-              style="
+          <article class="tile" data-tilt data-animate="reveal" style="
               display: flex;
               flex-direction: column;
               justify-content: space-evenly;">
@@ -162,44 +162,75 @@
     </section>
   </main>
 
-<footer class="footer">
-  <div class="container footer__inner">
-    <div class="footer__brand">
-      <span class="footer__logo">CRO<span style="color:var(--accent2)">'</span>Coding</span>
-      <p class="muted small">Développement web propre, rapide et livrable.</p>
-      <div class="pill-row" style="margin-top:6px">
-        <span class="pill">Responsive</span>
-        <span class="pill">SEO</span>
-        <span class="pill">Sécurité</span>
-      </div>
-    </div>
-
-    <div class="footer__cols">
-      <!-- <div class="footer__col">
-        <p class="footer__col-title">Services</p>
-        <a class="link" href="services.html">Landing page</a>
-        <a class="link" href="services.html">Vitrine</a>
-        <a class="link" href="services.html">E-Commerce</a>
-        <a class="link" href="services.html">Tout-en-un</a>
-      </div> -->
-      <div class="footer__col">
-        <!-- <p class="footer__col-title">Entreprise</p> -->
-        <a class="link" href="services.html">Nos services & prix</a>
-        <a class="link" href="contact.html">Nous contacter</a>
-        <a class="link" href="contact.html">Demander un devis</a>
-      </div>
-    </div>
+  <!-- SVG - forme de vague -->
+  <div class="footer-divider" aria-hidden="true">
+    <svg viewBox="0 0 1440 100" preserveAspectRatio="none">
+      <path d="M0,50 C240,90 480,10 720,50 C960,90 1200,10 1440,50 V100 H0 Z"></path>
+    </svg>
   </div>
 
-  <div class="container footer__bottom">
-    <p class="muted small">© 2025 – <span id="year"></span> CRO'Coding — Tous droits réservés.</p>
-    <div class="footer__legal">
-      <a class="footer__privacy" href="mentions-legales.html">Mentions légales</a>
-      <span class="muted">·</span>
-      <a class="footer__privacy" href="politique-de-confidentialite.html">Politique de confidentialité</a>
+  <footer class="footer-wave" role="contentinfo">
+    <div class="container">
+      <div class="footer-wave__main-grid">
+        <div class="footer-wave__about">
+          <h3 class="footer-wave__heading">
+            À propos de nous
+          </h3>
+          <p style="text-align: justify;">
+            Nous sommes deux associés passionnés par le web, experts en design, développement backend et
+            DevOps. Forts
+            de nos compétences techniques et créatives, nous vous accompagnons de l'idée à la réalisation
+            pour
+            donner vie au site web que vous imaginez – performant, esthétique et sur mesure.
+          </p>
+        </div>
+        <div class="footer-wave__links">
+          <h3 class="footer-wave__heading">
+            Navigation
+          </h3>
+          <ul>
+            <li><a href="index.html">
+                Accueil
+              </a></li>
+            <li><a href="services.html">
+                Nos Services
+              </a></li>
+            <li><a href="contact.html">
+                Nous Contacter
+              </a></li>
+          </ul>
+        </div>
+        <div class="footer-wave__links">
+          <h3 class="footer-wave__heading">
+            Informations légales
+          </h3>
+          <ul>
+            <li><a href="politique-de-confidentialite.html">
+                Politique de confidentialité
+              </a></li>
+            <li><a href="mentions-legales.html">
+                Mentions légales
+              </a></li>
+            <!-- <li><a href="cgv.html">
+              Conditions générales de vente
+            </a></li>
+            <li><a href="politique-cookies.html">
+              Politique de cookies
+            </a></li> -->
+          </ul>
+        </div>
+      </div>
+      <div class="footer-wave__bottom">
+        <p class="footer-wave__copyright">
+          &copy; 2025 – <span id="year"> </span>
+          <b style="color:green"><strong>
+              CRO'Coding
+            </strong></b>
+          — Tous droits réservés.
+        </p>
+      </div>
     </div>
-  </div>
-</footer>
+  </footer>
 
   <script src="js/main.js"></script>
 </body>

@@ -198,36 +198,75 @@
     </section>
   </main>
 
-<footer class="footer">
-  <div class="container footer__inner">
-    <div class="footer__brand">
-      <span class="footer__logo">CRO<span style="color:var(--accent2)">'</span>Coding</span>
-      <p class="muted small">Développement web propre, rapide et livrable.</p>
-      <div class="pill-row" style="margin-top:6px">
-        <span class="pill">Responsive</span>
-        <span class="pill">SEO</span>
-        <span class="pill">Sécurité</span>
-      </div>
-    </div>
-
-    <div class="footer__cols">
-      <div class="footer__col">
-        <a class="link" href="services.html">Nos services & prix</a>
-        <a class="link" href="contact.html">Nous contacter</a>
-        <a class="link" href="contact.html">Demander un devis</a>
-      </div>
-    </div>
+  <!-- SVG - forme de vague -->
+  <div class="footer-divider" aria-hidden="true">
+    <svg viewBox="0 0 1440 100" preserveAspectRatio="none">
+      <path d="M0,50 C240,90 480,10 720,50 C960,90 1200,10 1440,50 V100 H0 Z"></path>
+    </svg>
   </div>
 
-  <div class="container footer__bottom">
-    <p class="muted small">© 2025 – <span id="year"></span> CRO'Coding — Tous droits réservés.</p>
-    <div class="footer__legal">
-      <a class="footer__privacy" href="mentions-legales.html">Mentions légales</a>
-      <span class="muted">·</span>
-      <a class="footer__privacy" href="politique-de-confidentialite.html">Politique de confidentialité</a>
+  <footer class="footer-wave" role="contentinfo">
+    <div class="container">
+      <div class="footer-wave__main-grid">
+        <div class="footer-wave__about">
+          <h3 class="footer-wave__heading">
+            À propos de nous
+          </h3>
+          <p style="text-align: justify;">
+            Nous sommes deux associés passionnés par le web, experts en design, développement backend et
+            DevOps. Forts
+            de nos compétences techniques et créatives, nous vous accompagnons de l'idée à la réalisation
+            pour
+            donner vie au site web que vous imaginez – performant, esthétique et sur mesure.
+          </p>
+        </div>
+        <div class="footer-wave__links">
+          <h3 class="footer-wave__heading">
+            Navigation
+          </h3>
+          <ul>
+            <li><a href="index.html">
+                Accueil
+              </a></li>
+            <li><a href="services.html">
+                Nos Services
+              </a></li>
+            <li><a href="contact.html">
+                Nous Contacter
+              </a></li>
+          </ul>
+        </div>
+        <div class="footer-wave__links">
+          <h3 class="footer-wave__heading">
+            Informations légales
+          </h3>
+          <ul>
+            <li><a href="politique-de-confidentialite.html">
+                Politique de confidentialité
+              </a></li>
+            <li><a href="mentions-legales.html">
+                Mentions légales
+              </a></li>
+            <!-- <li><a href="cgv.html">
+              Conditions générales de vente
+            </a></li>
+            <li><a href="politique-cookies.html">
+              Politique de cookies
+            </a></li> -->
+          </ul>
+        </div>
+      </div>
+      <div class="footer-wave__bottom">
+        <p class="footer-wave__copyright">
+          &copy; 2025 – <span id="year"> </span>
+          <b style="color:green"><strong>
+              CRO'Coding
+            </strong></b>
+          — Tous droits réservés.
+        </p>
+      </div>
     </div>
-  </div>
-</footer>
+  </footer>
 
   <script src="js/main.js"></script>
 </body>
