@@ -283,7 +283,7 @@ html[data-theme="light"] .brand {
   display: none;
   width: 103%;
     left: -19px;
-    top: -9px;
+    top: 2px;
 }
 
 .brand__banner--dark {
