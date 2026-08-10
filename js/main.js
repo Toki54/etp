@@ -197,130 +197,236 @@
 		});
 	}
 
-	const form = $("#contactForm");
-	const note = $("#formNote");
-	const msg = $("#message");
-	const charCount = $("#charCount");
+document.addEventListener('DOMContentLoaded', () => {
+  const form = document.getElementById('contactForm');
+  const nameInput = document.getElementById('name');
+  const emailInput = document.getElementById('email');
+  const subjectInput = document.getElementById('subject');
+  const messageInput = document.getElementById('message');
+  const charCount = document.getElementById('charCount');
 
-	// Tes 2 boutons
-	const sendViaGmail = $("#sendViaGmail");
-	const sendViaMailto = $("#sendViaMailto");
+  const gmailBtn = document.getElementById('sendViaGmail');
+  const mailtoBtn = document.getElementById('sendViaMailto');
 
-	const setError = (fieldId, msgText) => {
-		const input = $("#" + fieldId);
-		const field = input ? input.closest(".field") : null;
-		const errorEl = document.querySelector(`[data-error-for="${fieldId}"]`);
-		if (!input || !field || !errorEl) return;
+  const DEST_EMAIL = 'crocodeur@crocodeur.fr';
 
-		if (msgText) {
-			field.classList.add("is-invalid");
-			errorEl.textContent = msgText;
-		} else {
-			field.classList.remove("is-invalid");
-			errorEl.textContent = "";
-		}
-	};
+  // Compteur de caractères pour le message
+  messageInput.addEventListener('input', () => {
+    charCount.textContent = `${messageInput.value.length} / 500`;
+  });
 
-	const isEmailValid = (email) => /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i.test(email);
+  function validateField(input) {
+    const errorEl = document.querySelector(`[data-error-for="${input.name}"]`);
+    if (!input.checkValidity()) {
+      errorEl.textContent = getErrorMessage(input);
+      input.classList.add('invalid');
+      return false;
+    } else {
+      errorEl.textContent = '';
+      input.classList.remove('invalid');
+      return true;
+    }
+  }
 
-	const setLinksEnabled = (enabled) => {
-		const apply = (el, on) => {
-			if (!el) return;
-			el.setAttribute("aria-disabled", on ? "false" : "true");
-			el.style.pointerEvents = on ? "auto" : "none";
-			el.style.opacity = on ? "1" : "0.6";
-		};
-		apply(sendViaGmail, enabled);
-		apply(sendViaMailto, enabled);
-	};
+  function getErrorMessage(input) {
+    if (input.validity.valueMissing) return 'Ce champ est requis.';
+    if (input.validity.typeMismatch && input.type === 'email') return 'Adresse email invalide.';
+    if (input.validity.tooShort) return `Minimum ${input.minLength} caractères.`;
+    return 'Champ invalide.';
+  }
 
-	const updateCharCount = () => {
-		if (!msg || !charCount) return;
-		const len = (msg.value || "").length;
-		charCount.textContent = `${len} / 500`;
-	};
+  function isFormValid() {
+    const fields = [nameInput, emailInput, subjectInput, messageInput];
+    // Valide chaque champ (met à jour les messages d'erreur) et retourne true si tous sont ok
+    return fields.map(validateField).every(Boolean);
+  }
 
-	const computeAndUpdateLinks = (showErrors) => {
-		if (!form) return false;
+  function buildLinks() {
+    const name = nameInput.value.trim();
+    const email = emailInput.value.trim();
+    const subject = subjectInput.value.trim();
+    const message = messageInput.value.trim();
 
-		const name = $("#name")?.value.trim() || "";
-		const email = $("#email")?.value.trim() || "";
-		const subject = $("#subject")?.value.trim() || "";
-		const message = $("#message")?.value.trim() || "";
+    const fullSubject = subject;
+    const fullBody =
+      `Nom : ${name}\nEmail : ${email}\n\n${message}`;
 
-		const okName = name.length >= 2;
-		const okEmail = isEmailValid(email);
-		const okSubject = subject.length >= 3;
-		const okMessage = message.length >= 10;
+    // Lien mailto
+    const mailtoUrl =
+      `mailto:${DEST_EMAIL}?subject=${encodeURIComponent(fullSubject)}&body=${encodeURIComponent(fullBody)}`;
 
-		const ok = okName && okEmail && okSubject && okMessage;
+    // Lien Gmail (web)
+    const gmailUrl =
+      `https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(DEST_EMAIL)}&su=${encodeURIComponent(fullSubject)}&body=${encodeURIComponent(fullBody)}`;
 
-		if (showErrors) {
-			setError("name", okName ? "" : "Nom trop court (min 2).");
-			setError("email", okEmail ? "" : "Email invalide.");
-			setError("subject", okSubject ? "" : "Sujet trop court (min 3).");
-			setError("message", okMessage ? "" : "Message trop court (min 10).");
-		}
+    return { mailtoUrl, gmailUrl };
+  }
 
-		if (!ok) {
-			setLinksEnabled(false);
-			if (note)
-				note.textContent =
-					"Remplis tout : les boutons s’activeront automatiquement.";
-			return false;
-		}
+  function updateLinks() {
+    const valid = isFormValid();
 
-		const to = "nico54.jeangeorges@gmail.com";
-		const mailSubject = `ETP Dev - ${subject}`;
-		const body = `Nom: ${name}
-Email: ${email}
+    if (valid) {
+      const { mailtoUrl, gmailUrl } = buildLinks();
+      mailtoBtn.href = mailtoUrl;
+      gmailBtn.href = gmailUrl;
+      mailtoBtn.removeAttribute('aria-disabled');
+      gmailBtn.removeAttribute('aria-disabled');
+      mailtoBtn.classList.remove('is-disabled');
+      gmailBtn.classList.remove('is-disabled');
+    } else {
+      mailtoBtn.href = '#';
+      gmailBtn.href = '#';
+      mailtoBtn.setAttribute('aria-disabled', 'true');
+      gmailBtn.setAttribute('aria-disabled', 'true');
+      mailtoBtn.classList.add('is-disabled');
+      gmailBtn.classList.add('is-disabled');
+    }
+  }
 
-Message:
-${message}
-`;
+  // Empêche le clic si le formulaire n'est pas valide
+  [gmailBtn, mailtoBtn].forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      if (btn.getAttribute('aria-disabled') === 'true') {
+        e.preventDefault();
+        // Force l'affichage des erreurs si l'utilisateur clique trop tôt
+        isFormValid();
+      }
+    });
+  });
 
-		const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(to)}&su=${encodeURIComponent(mailSubject)}&body=${encodeURIComponent(body)}`;
+  // Recalcule les liens à chaque saisie
+  [nameInput, emailInput, subjectInput, messageInput].forEach(input => {
+    input.addEventListener('input', updateLinks);
+    input.addEventListener('blur', () => validateField(input));
+  });
 
-		const mailtoUrl = `mailto:${to}?subject=${encodeURIComponent(mailSubject)}&body=${encodeURIComponent(body)}`;
+  // Initialisation
+  updateLinks();
+});
 
-		if (sendViaGmail) sendViaGmail.href = gmailUrl;
-		if (sendViaMailto) sendViaMailto.href = mailtoUrl;
+// 	// Tes 2 boutons
+// 	const form = $("#contactForm");
+// 	const note = $("#formNote");
+// 	const msg = $("#message");
+// 	const charCount = $("#charCount");
+// 	const sendViaGmail = $("#sendViaGmail");
+// 	const sendViaMailto = $("#sendViaMailto");
 
-		setLinksEnabled(true);
-		if (note) note.textContent = "Prêt ✅ choisis Gmail ou ton appli mail.";
-		return true;
-	};
+// 	const setError = (fieldId, msgText) => {
+// 		const input = $("#" + fieldId);
+// 		const field = input ? input.closest(".field") : null;
+// 		const errorEl = document.querySelector(`[data-error-for="${fieldId}"]`);
+// 		if (!input || !field || !errorEl) return;
 
-	setLinksEnabled(false);
-	updateCharCount();
-	computeAndUpdateLinks(false);
+// 		if (msgText) {
+// 			field.classList.add("is-invalid");
+// 			errorEl.textContent = msgText;
+// 		} else {
+// 			field.classList.remove("is-invalid");
+// 			errorEl.textContent = "";
+// 		}
+// 	};
 
-	["input", "change"].forEach((evt) => {
-		form?.addEventListener(evt, () => {
-			updateCharCount();
-			computeAndUpdateLinks(false);
-		});
-	});
+// 	const isEmailValid = (email) => /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i.test(email);
 
-	const guardClick = (e) => {
-		const ok = computeAndUpdateLinks(true);
-		if (!ok) e.preventDefault();
-	};
+// 	const setLinksEnabled = (enabled) => {
+// 		const apply = (el, on) => {
+// 			if (!el) return;
+// 			el.setAttribute("aria-disabled", on ? "false" : "true");
+// 			el.style.pointerEvents = on ? "auto" : "none";
+// 			el.style.opacity = on ? "1" : "0.6";
+// 		};
+// 		apply(sendViaGmail, enabled);
+// 		apply(sendViaMailto, enabled);
+// 	};
 
-	sendViaGmail?.addEventListener("click", guardClick);
-	sendViaMailto?.addEventListener("click", guardClick);
+// 	const updateCharCount = () => {
+// 		if (!msg || !charCount) return;
+// 		const len = (msg.value || "").length;
+// 		charCount.textContent = `${len} / 500`;
+// 	};
 
-	form?.addEventListener("submit", (e) => {
-		e.preventDefault();
-		computeAndUpdateLinks(true);
-	});
+// 	const computeAndUpdateLinks = (showErrors) => {
+// 		if (!form) return false;
 
-	function escapeHtml(str) {
-		return String(str)
-			.replaceAll("&", "&amp;")
-			.replaceAll("<", "&lt;")
-			.replaceAll(">", "&gt;")
-			.replaceAll('"', "&quot;")
-			.replaceAll("'", "&#039;");
-	}
+// 		const name = $("#name")?.value.trim() || "";
+// 		const email = $("#email")?.value.trim() || "";
+// 		const subject = $("#subject")?.value.trim() || "";
+// 		const message = $("#message")?.value.trim() || "";
+
+// 		const okName = name.length >= 2;
+// 		const okEmail = isEmailValid(email);
+// 		const okSubject = subject.length >= 3;
+// 		const okMessage = message.length >= 10;
+
+// 		const ok = okName && okEmail && okSubject && okMessage;
+
+// 		if (showErrors) {
+// 			setError("name", okName ? "" : "Nom trop court (min 2).");
+// 			setError("email", okEmail ? "" : "Email invalide.");
+// 			setError("subject", okSubject ? "" : "Sujet trop court (min 3).");
+// 			setError("message", okMessage ? "" : "Message trop court (min 10).");
+// 		}
+
+// 		if (!ok) {
+// 			setLinksEnabled(false);
+// 			if (note)
+// 				note.textContent =
+// 					"Remplis tout : les boutons s’activeront automatiquement.";
+// 			return false;
+// 		}
+
+// 		const to = "nico54.jeangeorges@gmail.com";
+// 		const mailSubject = `ETP Dev - ${subject}`;
+// 		const body = `Nom: ${name}
+// Email: ${email}
+
+// Message:
+// ${message}
+// `;
+
+// 		const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(to)}&su=${encodeURIComponent(mailSubject)}&body=${encodeURIComponent(body)}`;
+
+// 		const mailtoUrl = `mailto:${to}?subject=${encodeURIComponent(mailSubject)}&body=${encodeURIComponent(body)}`;
+
+// 		if (sendViaGmail) sendViaGmail.href = gmailUrl;
+// 		if (sendViaMailto) sendViaMailto.href = mailtoUrl;
+
+// 		setLinksEnabled(true);
+// 		if (note) note.textContent = "Prêt ✅ choisis Gmail ou ton appli mail.";
+// 		return true;
+// 	};
+
+// 	setLinksEnabled(false);
+// 	updateCharCount();
+// 	computeAndUpdateLinks(false);
+
+// 	["input", "change"].forEach((evt) => {
+// 		form?.addEventListener(evt, () => {
+// 			updateCharCount();
+// 			computeAndUpdateLinks(false);
+// 		});
+// 	});
+
+// 	const guardClick = (e) => {
+// 		const ok = computeAndUpdateLinks(true);
+// 		if (!ok) e.preventDefault();
+// 	};
+
+// 	sendViaGmail?.addEventListener("click", guardClick);
+// 	sendViaMailto?.addEventListener("click", guardClick);
+
+// 	form?.addEventListener("submit", (e) => {
+// 		e.preventDefault();
+// 		computeAndUpdateLinks(true);
+// 	});
+
+// 	function escapeHtml(str) {
+// 		return String(str)
+// 			.replaceAll("&", "&amp;")
+// 			.replaceAll("<", "&lt;")
+// 			.replaceAll(">", "&gt;")
+// 			.replaceAll('"', "&quot;")
+// 			.replaceAll("'", "&#039;");
+// 	}
 })();
